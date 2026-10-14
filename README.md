@@ -22,26 +22,71 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Firebase setup
 
-The Firebase Web SDK and Firestore configuration are ready to connect to a
-Firebase project. The app still uses fictional sample data, and the review form
-only creates a local preview; no app data is currently read from or written to
-Firestore.
+Worktruth stores user submissions in Cloud Firestore. Reviewers do not need an
+account. New submissions are marked `pending`, visible only to admins, and
+appear in public company listings only after an admin approves them.
 
-1. Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/),
-   add a Web app, and create a Cloud Firestore database.
-2. Copy `.env.example` to `.env.local` and replace the values with the Web app's
-   `apiKey`, `projectId`, and `appId`.
-3. Import `getFirebaseFirestore` from `lib/firebase.ts` in a Client Component
-   when Firestore access is needed. It initializes the default Firebase app
-   once and reports which configuration values are missing.
-4. The starter [Firestore rules](./firestore.rules) deny all client reads and
-   writes until the app's data schema and moderation flow are defined. To deploy
-   them, authenticate with the Firebase CLI, select your project, then run
-   `firebase deploy --only firestore:rules,firestore:indexes`.
+### Connect the Firebase project
 
-The `NEXT_PUBLIC_` values are Firebase Web app identifiers, not service-account
-secrets. Firestore security must be enforced with rules; do not put service
-account credentials in client code or `NEXT_PUBLIC_` environment variables.
+1. In the [Firebase Console](https://console.firebase.google.com/), create or
+   select a project, register a Web app, create a Cloud Firestore database, and
+   enable **Email/Password** under Authentication → Sign-in method.
+2. Copy `.env.example` to `.env.local` and enter the Web app's `apiKey`,
+   `authDomain`, `projectId`, and `appId`. Restart the Next.js development
+   server after changing environment values.
+3. In Firebase Console, open **Firestore Database → Rules**, replace the
+   editor contents with [`firestore.rules`](./firestore.rules), then click
+   **Publish**. The rules let unauthenticated visitors submit schema-validated
+   pending reviews and read approved reviews. All other public reads and writes
+   are denied. Admins can read the moderation queue and change a pending
+   review's moderation status.
+4. Open **Firestore Database → Indexes → Composite → Add index**. Create these
+   two indexes for the `reviews` collection, both with **Query scope: Collection**:
+
+   | Collection ID | Field | Order |
+   | --- | --- | --- |
+   | `reviews` | `moderationStatus` | Ascending |
+   |  | `createdAt` | Descending |
+
+   | Collection ID | Field | Order |
+   | --- | --- | --- |
+   | `reviews` | `moderationStatus` | Ascending |
+   |  | `companySlug` | Ascending |
+   |  | `createdAt` | Descending |
+
+   Leave **Array contains** unused. Wait for each index to show **Enabled**
+   before testing the review pages. The same index definitions are recorded in
+   [`firestore.indexes.json`](./firestore.indexes.json).
+
+### Set up an admin
+
+1. Create the admin's user in Firebase Console → Authentication → Users and
+   copy the user's UID.
+2. In Firestore Database → **Data**, create a top-level collection named
+   `admins` and add a document whose document ID is exactly the user's
+   Authentication UID. Add the string field `role` with value `admin`.
+3. The admin signs into `/admin` with that Firebase Authentication account.
+   Approving a review changes its moderation status to `approved`, and Firestore
+   publishes it to the public directory. Rejected submissions stay private.
+   To revoke access, delete that user's document from `admins`.
+
+### Review data and launch notes
+
+The `reviews` collection stores `companyName`, `role`, `employmentStatus`,
+`rating`, `pros`, `cons`, `createdAt`, and `moderationStatus`. The admin flow
+adds `companySlug` as part of approval, so submitters cannot choose which
+company page their review appears on. Firestore rules validate public
+submissions and prevent users from setting their own moderation status to
+approved. Only a project owner using the Firebase Console can add admin
+documents; client writes to `admins` are denied. Client Firebase configuration
+values are public identifiers, not secrets.
+
+Public submissions are intentionally account-free, so they can attract spam.
+Before a public launch, configure Firebase App Check and consider additional
+abuse controls. Complete the privacy/retention/contact terms for the actual
+service, set Firestore's data location deliberately, and review the moderation
+workflow. Only admin-approved reviews are shown; the old fictional sample
+content has been removed from public views.
 
 ## Learn More
 

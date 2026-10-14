@@ -18,7 +18,7 @@ export function CompanySearchForm({
       role="search"
     >
       <label className="sr-only" htmlFor="company-search">
-        Search companies in Nigeria
+        Search companies with approved reviews
       </label>
       <div className="company-search-field">
         <Search aria-hidden="true" className="size-5 shrink-0 text-muted-foreground" />
@@ -28,7 +28,7 @@ export function CompanySearchForm({
           defaultValue={initialQuery}
           id="company-search"
           name="q"
-          placeholder="Search companies in Nigeria..."
+          placeholder="Search companies with approved reviews..."
           type="search"
         />
       </div>

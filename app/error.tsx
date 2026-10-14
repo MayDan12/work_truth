@@ -15,7 +15,7 @@ export default function ErrorPage({
         This page could not be loaded.
       </TypographyH1>
       <TypographyP className="section-intro">
-        Try loading the page again. No review content has been sent or published.
+        Try loading the page again.
       </TypographyP>
       <Button className="form-submit mt-6" onClick={reset} size="lg" type="button">
         Try again

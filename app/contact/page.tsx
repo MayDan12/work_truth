@@ -5,14 +5,14 @@ import { TypographyH2, TypographyP } from "@/components/worktruth/typography"
 export default function ContactPage() {
   return (
     <InformationPage
-      description="A contact route is present so navigation works throughout the prototype."
+      description="A contact route is present so visitors can find the right next step."
       title="Contact Worktruth"
     >
       <section>
         <TypographyH2 className="text-xl">Contact channel not connected</TypographyH2>
         <TypographyP className="mt-2">
-          This local prototype does not have a contact inbox or message service.
-          No message form is provided, and we do not collect contact details here.
+          A contact inbox is not connected yet. No message form is provided, and
+          we do not collect contact details on this page.
         </TypographyP>
         <TypographyP className="mt-4">
           To explore sample listings, visit <Link className="text-link" href="/companies">Explore Companies</Link>.

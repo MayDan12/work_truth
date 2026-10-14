@@ -1,6 +1,6 @@
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
-import { ReviewPreviewForm } from "@/components/worktruth/review-preview-form"
+import { ReviewSubmissionForm } from "@/components/worktruth/review-submission-form"
 import { SitePageFrame } from "@/components/worktruth/site-shell"
 import { TypographyH1, TypographyP } from "@/components/worktruth/typography"
 
@@ -17,10 +17,10 @@ export default function WriteReviewPage() {
             Share your workplace experience.
           </TypographyH1>
           <TypographyP className="section-intro">
-            No account is needed to create a local review preview. In the live
-            product, reviews are manually moderated before publication.
+            No account is needed to submit a review. Every submission is held
+            for admin moderation and appears publicly only if approved.
           </TypographyP>
-          <ReviewPreviewForm />
+          <ReviewSubmissionForm />
         </div>
       </main>
     </SitePageFrame>

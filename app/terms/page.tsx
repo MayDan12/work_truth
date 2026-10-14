@@ -4,27 +4,30 @@ import { TypographyH2, TypographyP } from "@/components/worktruth/typography"
 export default function TermsPage() {
   return (
     <InformationPage
-      description="Draft terms information for the Worktruth demonstration."
+      description="Terms for submitting and viewing workplace reviews on Worktruth."
       title="Terms of Service"
     >
       <TypographyP>
-        This prototype is provided to demonstrate a possible workplace-review
-        experience. It is not a live service and this page is not a substitute
-        for reviewed legal terms.
+        These terms are a product summary and should receive legal review before
+        launch. By submitting a review, you agree to share first-hand workplace
+        feedback that follows the community guidelines.
       </TypographyP>
       <section>
-        <TypographyH2 className="text-xl">Fictional examples</TypographyH2>
+        <TypographyH2 className="text-xl">Moderation and publication</TypographyH2>
         <TypographyP className="mt-2">
-          Company names, locations, ratings, review counts, review excerpts, and
-          dates on this site are fictional sample content. They do not describe
-          actual employers or represent published user feedback.
+          Submissions are reviewed by an admin. Only approved reviews are
+          published; a submission is not guaranteed to be approved. Moderation
+          checks compliance with the community guidelines and is not independent
+          fact verification.
         </TypographyP>
       </section>
       <section>
-        <TypographyH2 className="text-xl">No review service connected</TypographyH2>
+        <TypographyH2 className="text-xl">Responsible submissions</TypographyH2>
         <TypographyP className="mt-2">
-          Searches only filter the local sample directory. Review entries produce
-          a temporary preview and are not sent, saved, moderated, or published.
+          Do not submit personal information, confidential company information,
+          threats, harassment, or claims you cannot responsibly support. The
+          review form does not request your name or an account, but this does not
+          guarantee anonymity.
         </TypographyP>
       </section>
     </InformationPage>

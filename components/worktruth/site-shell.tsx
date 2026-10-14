@@ -54,7 +54,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-bottom">
           <p>Worktruth helps people compare workplace experiences with care.</p>
-          <p>All company and review content shown here is fictional demo data.</p>
+          <p>Reviews are public only after admin approval.</p>
         </div>
       </div>
     </footer>

@@ -8,9 +8,8 @@ export default function CommunityGuidelinesPage() {
       title="Community Guidelines"
     >
       <TypographyP>
-        These draft guidelines describe the approach Worktruth intends to take.
-        Every review would be manually moderated before it could be published.
-        Moderation checks whether a contribution follows guidelines; it does not
+        Reviews are checked by a Worktruth admin before they can appear publicly.
+        Moderation checks submissions against these guidelines; it does not
         independently verify every statement.
       </TypographyP>
       <section>
@@ -36,13 +35,6 @@ export default function CommunityGuidelinesPage() {
           Focus on workplace practices and your own perspective. Avoid threats,
           harassment, discriminatory language, personal attacks, and claims you
           cannot responsibly support.
-        </TypographyP>
-      </section>
-      <section>
-        <TypographyH2 className="text-xl">A note about this prototype</TypographyH2>
-        <TypographyP className="mt-2">
-          This page is draft guidance in a local prototype. No reviews are sent
-          for moderation or publication here.
         </TypographyP>
       </section>
     </InformationPage>

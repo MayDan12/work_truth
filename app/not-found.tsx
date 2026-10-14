@@ -9,10 +9,10 @@ export default function NotFound() {
       <main className="page-container info-page" id="main-content">
         <p className="sample-label">404 · Not found</p>
         <TypographyH1 className="mt-4 text-[clamp(2rem,4vw,3rem)]">
-          That page isn&apos;t in this prototype.
+          That page could not be found.
         </TypographyH1>
         <TypographyP className="section-intro">
-          Try the fictional company directory or head back to the Worktruth home page.
+          Try the company directory or head back to the Worktruth home page.
         </TypographyP>
         <div className="mt-6 flex flex-wrap gap-4">
           <Link className="text-link" href="/companies">

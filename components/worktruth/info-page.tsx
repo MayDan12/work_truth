@@ -24,14 +24,14 @@ export function InformationPage({
           <TypographyP className="section-intro">{description}</TypographyP>
         </div>
         <div className="info-page-content">{children}</div>
-        <aside className="notice-panel" aria-label="Prototype information">
+        <aside className="notice-panel" aria-label="Review moderation information">
           <TypographyH2 className="text-base font-semibold tracking-normal">
-            Prototype information
+            How reviews are handled
           </TypographyH2>
           <TypographyP className="mt-2">
-            Worktruth is shown here as a local prototype. All company and review
-            content is fictional sample data. Linked flows do not connect to a
-            review service.
+            Review submissions are held for admin moderation and are not publicly
+            visible unless approved. Moderation checks our guidelines; it does not
+            independently verify every statement.
           </TypographyP>
         </aside>
       </main>

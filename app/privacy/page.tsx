@@ -4,14 +4,14 @@ import { TypographyH2, TypographyP } from "@/components/worktruth/typography"
 export default function PrivacyPage() {
   return (
     <InformationPage
-      description="A clear explanation of what public review pages show and what this prototype does not do."
+      description="What information is submitted for moderation and what appears on public review pages."
       title="Privacy Policy"
     >
       <TypographyP>
-        This is draft privacy information for a local prototype, not a complete
-        policy for a launched review service. Have the live product&apos;s data
-        collection, retention, security, and contact practices reviewed and
-        published before accepting real reviews.
+        Worktruth does not ask reviewers to create an account or provide their
+        name in the review form. This page is a summary and must be completed
+        with the service&apos;s final retention, deletion, contact, and legal
+        information before launch.
       </TypographyP>
       <section>
         <TypographyH2 className="text-xl">Public review identity</TypographyH2>
@@ -23,17 +23,19 @@ export default function PrivacyPage() {
         </TypographyP>
       </section>
       <section>
-        <TypographyH2 className="text-xl">Prototype behavior</TypographyH2>
+        <TypographyH2 className="text-xl">Review submissions</TypographyH2>
         <TypographyP className="mt-2">
-          The review form on this site creates a temporary preview in the current
-          page only. It does not send your entries to a server, save them, or
-          publish them. Refreshing or leaving the page clears the preview.
+          When you submit a review, its company name, broad job title, employment
+          status, rating, and written feedback are stored in the Worktruth
+          Firestore database for moderation. Pending and rejected reviews are not
+          shown publicly. Admins with moderation access can see pending
+          submissions.
         </TypographyP>
       </section>
       <section>
         <TypographyH2 className="text-xl">Manual moderation</TypographyH2>
         <TypographyP className="mt-2">
-          The intended product flow includes human moderation before publication.
+          Human moderation takes place before publication.
           Moderation is a review against community guidelines, not independent
           verification of every statement.
         </TypographyP>

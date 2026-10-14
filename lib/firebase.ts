@@ -2,6 +2,7 @@
 
 import "client-only";
 import { getApp, getApps, initializeApp, type FirebaseApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -9,7 +10,6 @@ const firebaseConfig = {
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
 };
 
 const requiredConfig = [
@@ -17,7 +17,6 @@ const requiredConfig = [
   ["NEXT_PUBLIC_FIREBASE_PROJECT_ID", firebaseConfig.projectId],
   ["NEXT_PUBLIC_FIREBASE_APP_ID", firebaseConfig.appId],
   ["NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN", firebaseConfig.authDomain],
-  ["NEXT_PUBLIC_STORAGE_BUCKET", firebaseConfig.storageBucket],
 ] as const;
 
 function getFirebaseApp(): FirebaseApp {
@@ -34,6 +33,10 @@ function getFirebaseApp(): FirebaseApp {
   return getApps().some((app) => app.name === "[DEFAULT]")
     ? getApp()
     : initializeApp(firebaseConfig);
+}
+
+export function getFirebaseAuth() {
+  return getAuth(getFirebaseApp());
 }
 
 export function getFirebaseFirestore() {

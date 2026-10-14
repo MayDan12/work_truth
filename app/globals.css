@@ -437,6 +437,13 @@
     padding-top: 1.1rem;
   }
 
+  .approved-overview-reviews {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding-top: 1.1rem;
+  }
+
   .sample-review-quote {
     color: #555c55;
   }
@@ -945,11 +952,6 @@
     flex: none;
   }
 
-  .sample-review-body {
-    grid-template-columns: 10.625rem minmax(0, 1fr);
-    gap: 1.4rem;
-  }
-
   .value-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -1083,6 +1085,10 @@
   }
 
   .review-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .approved-overview-reviews {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

@@ -10,10 +10,11 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CompanySearchForm } from "@/components/worktruth/company-search-form";
 import {
-  CompanyCard,
-  Rating,
-  ReviewCard,
-} from "@/components/worktruth/data-views";
+  ApprovedCompanyCards,
+  ApprovedOverview,
+  ApprovedReviewCards,
+  ApprovedReviewsProvider,
+} from "@/components/worktruth/approved-review-content";
 import { SiteFooter, SiteHeader } from "@/components/worktruth/site-shell";
 import {
   TypographyH1,
@@ -21,13 +22,6 @@ import {
   TypographyH3,
   TypographyP,
 } from "@/components/worktruth/typography";
-import {
-  companies,
-  demoContentNotice,
-  getAverageRating,
-  getCompanyBySlug,
-  reviews,
-} from "@/lib/worktruth-data";
 
 const benefits = [
   {
@@ -67,17 +61,8 @@ const processSteps = [
 ];
 
 export default function Home() {
-  const featuredCompany = getCompanyBySlug("korastack-studio");
-  const featuredReview = reviews.find(
-    (review) => review.companySlug === "korastack-studio",
-  );
-  const exampleReviews = [reviews[0], reviews[1]];
-
-  if (!featuredCompany || !featuredReview) {
-    throw new Error("Worktruth sample content is unavailable.");
-  }
-
   return (
+    <ApprovedReviewsProvider>
     <div className="site-page">
       <SiteHeader />
       <main id="main-content">
@@ -109,54 +94,7 @@ export default function Home() {
             </p>
           </div>
 
-          <article
-            aria-labelledby="sample-company-name"
-            className="sample-preview"
-          >
-            <header className="sample-preview-head">
-              <div>
-                <div className="sample-company-heading">
-                  <TypographyH2
-                    className="text-[1.3rem]"
-                    id="sample-company-name"
-                  >
-                    {featuredCompany.name}
-                  </TypographyH2>
-                  <span className="sample-label">
-                    Fictional example · Sample preview — not published feedback
-                  </span>
-                </div>
-                <p className="sample-company-meta">
-                  {featuredCompany.industry} · {featuredCompany.location},
-                  Nigeria
-                </p>
-              </div>
-              <Rating
-                count={featuredCompany.reviews.length}
-                value={getAverageRating(featuredCompany)}
-              />
-            </header>
-            <div className="sample-review-body">
-              <p className="sample-label">A sample experience</p>
-              <div>
-                <TypographyH3>
-                  Room to learn, with a few trade-offs
-                </TypographyH3>
-                <TypographyP className="sample-review-quote">
-                  “Teammates made time to share context, and I had room to take
-                  ownership of meaningful product work. Priorities could change
-                  quickly, so planning a week ahead sometimes needed
-                  flexibility.”
-                </TypographyP>
-                <p className="sample-review-summary">
-                  <strong>Pros</strong> Supportive peers · Broad
-                  ownership&nbsp;&nbsp;
-                  <strong>Cons</strong> Changing priorities
-                </p>
-              </div>
-            </div>
-          </article>
-          <p className="demo-disclaimer">{demoContentNotice}</p>
+          <ApprovedOverview />
         </section>
 
         <section
@@ -208,8 +146,7 @@ export default function Home() {
                 Get to know the companies behind the job titles.
               </TypographyH2>
               <p className="discovery-note">
-                Fictional sample companies and illustrative review data — not
-                real employer feedback.
+                Explore companies with admin-approved employee reviews.
               </p>
             </div>
             <Link className="text-link" href="/companies">
@@ -217,11 +154,10 @@ export default function Home() {
               <ArrowUpRight aria-hidden="true" className="size-4" />
             </Link>
           </div>
-          <div className="company-grid">
-            {companies.map((company) => (
-              <CompanyCard company={company} key={company.slug} />
-            ))}
-          </div>
+          <ApprovedCompanyCards
+            emptyMessage="No companies appear until a workplace review is approved."
+            limit={6}
+          />
         </section>
 
         <section
@@ -229,25 +165,12 @@ export default function Home() {
           className="review-section section"
         >
           <div className="page-container">
-            <TypographyH2 id="reviews-title">
-              More than a rating. Real workplace context.
-            </TypographyH2>
+            <TypographyH2 id="reviews-title">Approved reviews, with workplace context.</TypographyH2>
             <TypographyP className="section-intro">
-              A score is a starting point. The details help explain what work
-              can feel like day to day. These examples are fictional and
-              unpublished.
+              Read employee experiences that have been reviewed and approved by a Worktruth admin.
             </TypographyP>
             <div className="review-grid">
-              {exampleReviews.map((review) => {
-                const company = getCompanyBySlug(review.companySlug);
-                return company ? (
-                  <ReviewCard
-                    company={company}
-                    key={review.id}
-                    review={review}
-                  />
-                ) : null;
-              })}
+              <ApprovedReviewCards limit={2} />
             </div>
           </div>
         </section>
@@ -313,5 +236,6 @@ export default function Home() {
       </main>
       <SiteFooter />
     </div>
+    </ApprovedReviewsProvider>
   );
 }
