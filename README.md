@@ -20,6 +20,29 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Firebase setup
+
+The Firebase Web SDK and Firestore configuration are ready to connect to a
+Firebase project. The app still uses fictional sample data, and the review form
+only creates a local preview; no app data is currently read from or written to
+Firestore.
+
+1. Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/),
+   add a Web app, and create a Cloud Firestore database.
+2. Copy `.env.example` to `.env.local` and replace the values with the Web app's
+   `apiKey`, `projectId`, and `appId`.
+3. Import `getFirebaseFirestore` from `lib/firebase.ts` in a Client Component
+   when Firestore access is needed. It initializes the default Firebase app
+   once and reports which configuration values are missing.
+4. The starter [Firestore rules](./firestore.rules) deny all client reads and
+   writes until the app's data schema and moderation flow are defined. To deploy
+   them, authenticate with the Firebase CLI, select your project, then run
+   `firebase deploy --only firestore:rules,firestore:indexes`.
+
+The `NEXT_PUBLIC_` values are Firebase Web app identifiers, not service-account
+secrets. Firestore security must be enforced with rules; do not put service
+account credentials in client code or `NEXT_PUBLIC_` environment variables.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
