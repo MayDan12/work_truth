@@ -41,7 +41,7 @@ export function CompanyCard({ company }: { company: Company }) {
       </TypographyH3>
       <Rating count={company.reviews.length} value={rating} />
       <TypographyP className="company-record-summary">
-        {company.reviews.length} admin-approved workplace{" "}
+        {company.reviews.length} Approved workplace{" "}
         {company.reviews.length === 1 ? "review" : "reviews"}.
       </TypographyP>
       <ArrowUpRight aria-hidden="true" className="company-record-arrow" />

@@ -18,7 +18,7 @@ export default function WriteReviewPage() {
           </TypographyH1>
           <TypographyP className="section-intro">
             No account is needed to submit a review. Every submission is held
-            for admin moderation and appears publicly only if approved.
+            for moderation and appears publicly only if approved.
           </TypographyP>
           <ReviewSubmissionForm />
         </div>

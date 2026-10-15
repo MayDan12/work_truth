@@ -17,7 +17,7 @@ export default function TermsPage() {
           Moderation and publication
         </TypographyH2>
         <TypographyP className="mt-2">
-          Submissions are reviewed by an admin. Only approved reviews are
+          Submissions are reviewed by Contrair. Only approved reviews are
           published; a submission is not guaranteed to be approved. Moderation
           checks compliance with the community guidelines and is not independent
           fact verification.

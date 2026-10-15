@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Contrair — Know what it’s really like to work there",
   description:
-    "Explore admin-approved workplace reviews and learn how Contrair helps people research Nigerian companies before a career move.",
+    "Explore workplace reviews and learn how Contrair helps people research Nigerian companies before a career move.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

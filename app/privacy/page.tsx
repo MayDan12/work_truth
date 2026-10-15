@@ -27,9 +27,8 @@ export default function PrivacyPage() {
         <TypographyP className="mt-2">
           When you submit a review, its company name, broad job title,
           employment status, rating, and written feedback are stored in the
-          Contrair Firestore database for moderation. Pending and rejected
-          reviews are not shown publicly. Admins with moderation access can see
-          pending submissions.
+          Contrair database. Pending and rejected reviews are not shown
+          publicly.
         </TypographyP>
       </section>
       <section>

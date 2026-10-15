@@ -56,7 +56,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-bottom">
           <p>Contrair helps people compare workplace experiences with care.</p>
-          <p>Reviews are public only after admin approval.</p>
+          <p>Reviews are public only after Contrair approval.</p>
         </div>
       </div>
     </footer>

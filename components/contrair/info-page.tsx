@@ -38,9 +38,9 @@ export function InformationPage({
             How reviews are handled
           </TypographyH2>
           <TypographyP className="mt-2">
-            Review submissions are held for admin moderation and are not
-            publicly visible unless approved. Moderation checks our guidelines;
-            it does not independently verify every statement.
+            Review submissions are held for moderation and are not publicly
+            visible unless approved. Moderation checks our guidelines; it does
+            not independently verify every statement.
           </TypographyP>
         </aside>
       </main>

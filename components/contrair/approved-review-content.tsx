@@ -202,7 +202,7 @@ export function ApprovedOverview() {
             Recently approved workplace reviews
           </TypographyH2>
           <p className="sample-company-meta">
-            Only reviews approved by a Contrair admin appear here.
+            Only reviews approved by Contrair appear here.
           </p>
         </div>
       </header>
@@ -329,7 +329,7 @@ export function ApprovedCompanyDirectory({
           <TypographyP>
             {normalizedQuery
               ? "Try another company name or browse the directory again."
-              : "Companies will be listed after an admin approves their first review."}
+              : "Companies will be listed after Contrair approves their first review."}
           </TypographyP>
           {normalizedQuery ? (
             <Link className="text-link mt-4" href="/companies">
@@ -354,7 +354,7 @@ export function ApprovedCompanyReviewList({ slug }: { slug: string }) {
   return (
     <>
       <section aria-labelledby="company-title" className="mt-8">
-        <p className="sample-label">Admin-approved employee reviews</p>
+        <p className="sample-label">Employee reviews</p>
         <TypographyH1
           className="mt-3 text-[clamp(2rem,4vw,3rem)]"
           id="company-title"
@@ -390,8 +390,7 @@ export function ApprovedCompanyReviewList({ slug }: { slug: string }) {
               No approved reviews for this company
             </TypographyH2>
             <TypographyP>
-              Reviews appear here only after a Worktruth admin has approved
-              them.
+              Reviews appear here only after Contrair has approved them.
             </TypographyP>
             <Link className="text-link mt-4" href="/write-review">
               Share a workplace review

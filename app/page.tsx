@@ -146,7 +146,7 @@ export default function Home() {
                   Get to know the companies behind the job titles.
                 </TypographyH2>
                 <p className="discovery-note">
-                  Explore companies with admin-approved employee reviews.
+                  Explore companies with employee reviews.
                 </p>
               </div>
               <Link className="text-link" href="/companies">
@@ -170,7 +170,7 @@ export default function Home() {
               </TypographyH2>
               <TypographyP className="section-intro">
                 Read employee experiences that have been reviewed and approved
-                by a Contrair admin.
+                by Contrair.
               </TypographyP>
               <div className="review-grid">
                 <ApprovedReviewCards limit={2} />

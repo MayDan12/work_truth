@@ -35,7 +35,7 @@ export default function CompaniesPage({
           Explore companies
         </TypographyH1>
         <TypographyP className="section-intro">
-          Search companies with workplace reviews approved by a Contrair admin.
+          Search companies with workplace reviews approved by Contrair.
         </TypographyP>
         <Suspense
           fallback={

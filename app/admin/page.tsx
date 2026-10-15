@@ -256,8 +256,7 @@ export default function AdminPage() {
           Review moderation
         </TypographyH1>
         <TypographyP className="section-intro">
-          Only signed-in users with the Firebase admin role can access
-          submissions.
+          Only signed-in users with the admin role can access submissions.
         </TypographyP>
 
         {error ? (

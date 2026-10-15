@@ -8,7 +8,7 @@ export default function CommunityGuidelinesPage() {
       title="Community Guidelines"
     >
       <TypographyP>
-        Reviews are checked by a Contrair admin before they can appear publicly.
+        Reviews are checked by Contrair before they can appear publicly.
         Moderation checks submissions against these guidelines; it does not
         independently verify every statement.
       </TypographyP>
