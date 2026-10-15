@@ -54,7 +54,7 @@ export function ReviewCard({ review }: { review: WorkplaceReview }) {
     <article className="review-card">
       <header className="review-card-header">
         <div>
-          <p className="sample-label">Approved employee review</p>
+          {/* <p className="sample-label">Approved employee review</p> */}
           <TypographyH3 className="review-company-name">
             {review.companyName}
           </TypographyH3>

@@ -642,7 +642,7 @@
     border: 1px solid var(--border);
     border-radius: 0.4rem;
     background: var(--card);
-    padding: clamp(1.1rem, 2vw, 1.6rem);
+    padding: clamp(1.1rem, 2vw, 1.2rem);
   }
 
   .review-card-header {
@@ -708,6 +708,8 @@
     padding-top: 0.8rem;
     color: var(--muted-foreground);
     font-size: 0.75rem;
+    /* right position */
+    text-align: right;
   }
 
   .privacy-section {
@@ -1088,7 +1090,7 @@
   }
 
   .approved-overview-reviews {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 
