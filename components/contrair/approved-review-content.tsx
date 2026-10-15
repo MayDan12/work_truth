@@ -24,6 +24,14 @@ import {
 } from "@/components/contrair/data-views";
 import { CompanySearchForm } from "@/components/contrair/company-search-form";
 import {
+  CompanyDetailSkeleton,
+  CompanyGridSkeleton,
+  LoadingSpinner,
+  OverviewSkeleton,
+  ReviewGridSkeleton,
+} from "@/components/contrair/loading-skeletons";
+import { Skeleton } from "@/components/ui/skeleton";
+import {
   TypographyH1,
   TypographyH2,
   TypographyP,
@@ -172,9 +180,9 @@ function ReviewLoadState({
 }) {
   if (loading) {
     return (
-      <p aria-live="polite" className="form-help" role="status">
-        Loading approved reviews…
-      </p>
+      <div className="py-2">
+        <LoadingSpinner label="Loading approved reviews…" />
+      </div>
     );
   }
   if (error) {
@@ -191,6 +199,10 @@ export function ApprovedOverview() {
   const { reviews, loading, error } = useApprovedReviews();
   const companies = groupReviewsByCompany(reviews);
 
+  if (loading) {
+    return <OverviewSkeleton />;
+  }
+
   return (
     <article
       aria-labelledby="approved-overview-title"
@@ -206,8 +218,8 @@ export function ApprovedOverview() {
           </p>
         </div>
       </header>
-      <ReviewLoadState error={error} loading={loading} />
-      {!loading && !error && reviews.length === 0 ? (
+      <ReviewLoadState error={error} loading={false} />
+      {!error && reviews.length === 0 ? (
         <div className="empty-state">
           <TypographyH2 className="text-[1.2rem]">
             No approved reviews yet
@@ -245,10 +257,14 @@ export function ApprovedCompanyCards({
   const { reviews, loading, error } = useApprovedReviews();
   const companies = groupReviewsByCompany(reviews);
 
+  if (loading) {
+    return <CompanyGridSkeleton count={limit ?? 6} />;
+  }
+
   return (
     <>
-      <ReviewLoadState error={error} loading={loading} />
-      {!loading && !error && companies.length === 0 ? (
+      <ReviewLoadState error={error} loading={false} />
+      {!error && companies.length === 0 ? (
         <p className="empty-state">{emptyMessage}</p>
       ) : null}
       <div className="company-grid">
@@ -263,13 +279,17 @@ export function ApprovedCompanyCards({
 export function ApprovedReviewCards({ limit }: { limit?: number }) {
   const { reviews, loading, error } = useApprovedReviews();
 
+  if (loading) {
+    return <ReviewGridSkeleton count={limit ?? 2} />;
+  }
+
   return (
     <>
-      <ReviewLoadState error={error} loading={loading} />
+      <ReviewLoadState error={error} loading={false} />
       {reviews.slice(0, limit).map((review) => (
         <ReviewCard key={review.id} review={review} />
       ))}
-      {!loading && !error && reviews.length === 0 ? (
+      {!error && reviews.length === 0 ? (
         <p className="empty-state">
           No approved reviews yet. Approved reviews will appear here.
         </p>
@@ -292,22 +312,34 @@ export function ApprovedCompanyDirectory({
       )
     : companies;
 
+  if (loading) {
+    return (
+      <>
+        <div className="company-list-toolbar">
+          <CompanySearchForm initialQuery={initialQuery} />
+        </div>
+        <div className="my-4">
+          <Skeleton className="h-4 w-48" />
+        </div>
+        <CompanyGridSkeleton count={6} />
+      </>
+    );
+  }
+
   return (
     <>
       <div className="company-list-toolbar">
         <CompanySearchForm initialQuery={initialQuery} />
       </div>
       <p aria-live="polite" className="results-summary">
-        {loading
-          ? "Loading approved reviews…"
-          : error
-            ? "Approved reviews are unavailable."
-            : normalizedQuery
-              ? `${results.length} ${results.length === 1 ? "company" : "companies"} with approved reviews match “${initialQuery.trim()}”.`
-              : `${companies.length} ${companies.length === 1 ? "company" : "companies"} with approved reviews.`}
+        {error
+          ? "Approved reviews are unavailable."
+          : normalizedQuery
+            ? `${results.length} ${results.length === 1 ? "company" : "companies"} with approved reviews match “${initialQuery.trim()}”.`
+            : `${companies.length} ${companies.length === 1 ? "company" : "companies"} with approved reviews.`}
       </p>
       {error ? <ReviewLoadState error={error} loading={false} /> : null}
-      {!loading && !error && results.length > 0 ? (
+      {!error && results.length > 0 ? (
         <section aria-labelledby="company-results-title">
           <h2 className="sr-only" id="company-results-title">
             Companies with approved reviews
@@ -319,7 +351,7 @@ export function ApprovedCompanyDirectory({
           </div>
         </section>
       ) : null}
-      {!loading && !error && results.length === 0 ? (
+      {!error && results.length === 0 ? (
         <section aria-labelledby="empty-title" className="empty-state">
           <TypographyH2 className="text-[1.35rem]" id="empty-title">
             {normalizedQuery
@@ -351,6 +383,10 @@ export function ApprovedCompanyReviewList({ slug }: { slug: string }) {
   const companies = groupReviewsByCompany(reviews);
   const company = companies[0];
 
+  if (loading) {
+    return <CompanyDetailSkeleton />;
+  }
+
   return (
     <>
       <section aria-labelledby="company-title" className="mt-8">
@@ -376,15 +412,15 @@ export function ApprovedCompanyReviewList({ slug }: { slug: string }) {
         <TypographyH2 id="company-reviews-title">
           Approved workplace reviews
         </TypographyH2>
-        <ReviewLoadState error={error} loading={loading} />
-        {!loading && !error && reviews.length > 0 ? (
+        <ReviewLoadState error={error} loading={false} />
+        {!error && reviews.length > 0 ? (
           <div className="review-grid">
             {reviews.map((review) => (
               <ReviewCard key={review.id} review={review} />
             ))}
           </div>
         ) : null}
-        {!loading && !error && reviews.length === 0 ? (
+        {!error && reviews.length === 0 ? (
           <div className="empty-state">
             <TypographyH2 className="text-[1.25rem]">
               No approved reviews for this company

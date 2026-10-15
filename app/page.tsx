@@ -28,6 +28,7 @@ import {
   MotionStaggerItem,
   MotionTap,
 } from "@/components/contrair/motion-wrappers";
+import { InquisitiveBlobatar } from "@/components/contrair/inquisitive-blobatar";
 
 const benefits = [
   {
@@ -77,7 +78,10 @@ export default function Home() {
             className="page-container hero-section"
           >
             <div className="hero-copy text-center">
-              <MotionFadeIn delay={0.04} duration={0.45} viewport={false}>
+              <MotionFadeIn delay={0.02} duration={0.45} viewport={false} className="mb-4">
+                <InquisitiveBlobatar name="alain00" size={72} />
+              </MotionFadeIn>
+              <MotionFadeIn delay={0.08} duration={0.45} viewport={false}>
                 <TypographyH1 id="hero-title">
                   Know what it&apos;s really like to work there.
                 </TypographyH1>
@@ -124,7 +128,11 @@ export default function Home() {
             </MotionFadeIn>
             <MotionStagger className="value-grid">
               {benefits.map(({ icon: Icon, title, description }) => (
-                <MotionStaggerItem as="article" className="value-item" key={title}>
+                <MotionStaggerItem
+                  as="article"
+                  className="value-item"
+                  key={title}
+                >
                   <Icon aria-hidden="true" className="value-icon" />
                   <TypographyH3 className="value-title">{title}</TypographyH3>
                   <TypographyP className="value-description">
@@ -146,7 +154,11 @@ export default function Home() {
               </MotionFadeIn>
               <MotionStagger as="ol" className="steps-list">
                 {processSteps.map((step, index) => (
-                  <MotionStaggerItem as="li" className="step-item" key={step.title}>
+                  <MotionStaggerItem
+                    as="li"
+                    className="step-item"
+                    key={step.title}
+                  >
                     <span className="step-number">0{index + 1}</span>
                     <TypographyH3>{step.title}</TypographyH3>
                     <TypographyP>{step.description}</TypographyP>
@@ -250,7 +262,10 @@ export default function Home() {
               <div className="cta-actions">
                 <MotionTap className="w-fit">
                   <Link
-                    className={cn(buttonVariants({ size: "lg" }), "cta-primary")}
+                    className={cn(
+                      buttonVariants({ size: "lg" }),
+                      "cta-primary",
+                    )}
                     href="/write-review"
                   >
                     Write an Anonymous Review

@@ -3,6 +3,7 @@ import {
   ApprovedCompanyDirectory,
   ApprovedReviewsProvider,
 } from "@/components/contrair/approved-review-content";
+import { CompanyDirectorySkeleton } from "@/components/contrair/loading-skeletons";
 import { SitePageFrame } from "@/components/contrair/site-shell";
 import { TypographyH1, TypographyP } from "@/components/contrair/typography";
 
@@ -37,13 +38,7 @@ export default function CompaniesPage({
         <TypographyP className="section-intro">
           Search companies with workplace reviews approved by Contrair.
         </TypographyP>
-        <Suspense
-          fallback={
-            <p aria-live="polite" className="results-summary" role="status">
-              Loading approved company reviews…
-            </p>
-          }
-        >
+        <Suspense fallback={<CompanyDirectorySkeleton />}>
           <CompanyResults searchParams={searchParams} />
         </Suspense>
       </main>

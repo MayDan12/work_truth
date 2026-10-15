@@ -5,8 +5,8 @@ import {
   ApprovedCompanyReviewList,
   ApprovedReviewsProvider,
 } from "@/components/contrair/approved-review-content";
+import { CompanyDetailSkeleton } from "@/components/contrair/loading-skeletons";
 import { SitePageFrame } from "@/components/contrair/site-shell";
-import { TypographyH1 } from "@/components/contrair/typography";
 
 async function CompanyDetails({
   params,
@@ -33,13 +33,7 @@ export default function CompanyPage({
           <ArrowLeft aria-hidden="true" className="size-4" />
           Back to companies
         </Link>
-        <Suspense
-          fallback={
-            <TypographyH1 className="mt-8 text-[clamp(2rem,4vw,3rem)]">
-              Loading company reviews…
-            </TypographyH1>
-          }
-        >
+        <Suspense fallback={<CompanyDetailSkeleton />}>
           <CompanyDetails params={params} />
         </Suspense>
       </main>

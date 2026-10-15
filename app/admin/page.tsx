@@ -30,6 +30,10 @@ import {
   TypographyP,
 } from "@/components/contrair/typography";
 import { ReviewCard } from "@/components/contrair/data-views";
+import {
+  LoadingSpinner,
+  ReviewGridSkeleton,
+} from "@/components/contrair/loading-skeletons";
 import { getFirebaseAuth, getFirebaseFirestore } from "@/lib/firebase";
 import { parseWorkplaceReview } from "@/lib/firebase-reviews";
 import { getCompanySlug, type WorkplaceReview } from "@/lib/worktruth-data";
@@ -266,9 +270,9 @@ export default function AdminPage() {
         ) : null}
 
         {visibleAccess === "loading" ? (
-          <p aria-live="polite" className="form-help" role="status">
-            Checking admin access…
-          </p>
+          <div className="py-8">
+            <LoadingSpinner label="Checking admin access…" />
+          </div>
         ) : null}
 
         {visibleAccess === "signed-out" ? (
@@ -342,9 +346,9 @@ export default function AdminPage() {
               </Button>
             </div>
             {queueLoading ? (
-              <p aria-live="polite" className="form-help mt-6" role="status">
-                Loading pending reviews…
-              </p>
+              <div className="mt-6">
+                <ReviewGridSkeleton count={2} />
+              </div>
             ) : reviews.length === 0 ? (
               <p className="empty-state mt-6">
                 There are no reviews waiting for moderation.
