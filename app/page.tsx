@@ -78,8 +78,13 @@ export default function Home() {
             className="page-container hero-section"
           >
             <div className="hero-copy text-center">
-              <MotionFadeIn delay={0.02} duration={0.45} viewport={false} className="mb-4">
-                <InquisitiveBlobatar name="alain00" size={72} />
+              <MotionFadeIn
+                delay={0.02}
+                duration={0.45}
+                viewport={false}
+                className="mb-4"
+              >
+                <InquisitiveBlobatar name="alain00" size={82} />
               </MotionFadeIn>
               <MotionFadeIn delay={0.08} duration={0.45} viewport={false}>
                 <TypographyH1 id="hero-title">

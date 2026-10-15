@@ -129,6 +129,7 @@ export function InquisitiveBlobatar({
         <Blobatar
           animate="always"
           expression={currentExpression}
+          hue={150}
           name={name}
           size={size}
         />
