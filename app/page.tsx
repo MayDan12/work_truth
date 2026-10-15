@@ -22,6 +22,12 @@ import {
   TypographyH3,
   TypographyP,
 } from "@/components/contrair/typography";
+import {
+  MotionFadeIn,
+  MotionStagger,
+  MotionStaggerItem,
+  MotionTap,
+} from "@/components/contrair/motion-wrappers";
 
 const benefits = [
   {
@@ -71,50 +77,62 @@ export default function Home() {
             className="page-container hero-section"
           >
             <div className="hero-copy text-center">
-              <TypographyH1 id="hero-title">
-                Know what it&apos;s really like to work there.
-              </TypographyH1>
-              <TypographyP className="hero-description">
-                Honest workplace experiences from people who have been there.
-                Research Nigerian tech companies before you make your next
-                career move.
-              </TypographyP>
+              <MotionFadeIn delay={0.04} duration={0.45} viewport={false}>
+                <TypographyH1 id="hero-title">
+                  Know what it&apos;s really like to work there.
+                </TypographyH1>
+              </MotionFadeIn>
+              <MotionFadeIn delay={0.12} duration={0.45} viewport={false}>
+                <TypographyP className="hero-description">
+                  Honest workplace experiences from people who have been there.
+                  Research Nigerian tech companies before you make your next
+                  career move.
+                </TypographyP>
+              </MotionFadeIn>
             </div>
 
-            <CompanySearchForm />
+            <MotionFadeIn delay={0.2} duration={0.45} viewport={false}>
+              <CompanySearchForm />
+            </MotionFadeIn>
 
-            <div className="hero-actions">
-              <Link className="text-link" href="/write-review">
-                Share Your Experience
-                <ArrowUpRight aria-hidden="true" className="size-4" />
-              </Link>
-              <p className="trust-note">
-                <EyeOff aria-hidden="true" className="size-4 text-primary" />
-                Read anonymously. Share without an account.
-              </p>
-            </div>
+            <MotionFadeIn delay={0.28} duration={0.45} viewport={false}>
+              <div className="hero-actions">
+                <Link className="text-link" href="/write-review">
+                  Share Your Experience
+                  <ArrowUpRight aria-hidden="true" className="size-4" />
+                </Link>
+                <p className="trust-note">
+                  <EyeOff aria-hidden="true" className="size-4 text-primary" />
+                  Read anonymously. Share without an account.
+                </p>
+              </div>
+            </MotionFadeIn>
 
-            <ApprovedOverview />
+            <MotionFadeIn delay={0.34} duration={0.45} viewport={false}>
+              <ApprovedOverview />
+            </MotionFadeIn>
           </section>
 
           <section
             aria-labelledby="values-title"
             className="page-container section"
           >
-            <TypographyH2 id="values-title">
-              Make career decisions with more context.
-            </TypographyH2>
-            <div className="value-grid">
+            <MotionFadeIn>
+              <TypographyH2 id="values-title">
+                Make career decisions with more context.
+              </TypographyH2>
+            </MotionFadeIn>
+            <MotionStagger className="value-grid">
               {benefits.map(({ icon: Icon, title, description }) => (
-                <article className="value-item" key={title}>
+                <MotionStaggerItem as="article" className="value-item" key={title}>
                   <Icon aria-hidden="true" className="value-icon" />
                   <TypographyH3 className="value-title">{title}</TypographyH3>
                   <TypographyP className="value-description">
                     {description}
                   </TypographyP>
-                </article>
+                </MotionStaggerItem>
               ))}
-            </div>
+            </MotionStagger>
           </section>
 
           <section
@@ -123,16 +141,18 @@ export default function Home() {
             id="how-it-works"
           >
             <div className="page-container">
-              <TypographyH2 id="how-title">How it works</TypographyH2>
-              <ol className="steps-list">
+              <MotionFadeIn>
+                <TypographyH2 id="how-title">How it works</TypographyH2>
+              </MotionFadeIn>
+              <MotionStagger as="ol" className="steps-list">
                 {processSteps.map((step, index) => (
-                  <li className="step-item" key={step.title}>
+                  <MotionStaggerItem as="li" className="step-item" key={step.title}>
                     <span className="step-number">0{index + 1}</span>
                     <TypographyH3>{step.title}</TypographyH3>
                     <TypographyP>{step.description}</TypographyP>
-                  </li>
+                  </MotionStaggerItem>
                 ))}
-              </ol>
+              </MotionStagger>
             </div>
           </section>
 
@@ -140,7 +160,7 @@ export default function Home() {
             aria-labelledby="discovery-title"
             className="page-container section"
           >
-            <div className="discovery-header">
+            <MotionFadeIn className="discovery-header">
               <div>
                 <TypographyH2 id="discovery-title">
                   Get to know the companies behind the job titles.
@@ -153,11 +173,13 @@ export default function Home() {
                 Explore Companies{" "}
                 <ArrowUpRight aria-hidden="true" className="size-4" />
               </Link>
-            </div>
-            <ApprovedCompanyCards
-              emptyMessage="No companies appear until a workplace review is approved."
-              limit={6}
-            />
+            </MotionFadeIn>
+            <MotionFadeIn delay={0.1}>
+              <ApprovedCompanyCards
+                emptyMessage="No companies appear until a workplace review is approved."
+                limit={6}
+              />
+            </MotionFadeIn>
           </section>
 
           <section
@@ -165,16 +187,18 @@ export default function Home() {
             className="review-section section"
           >
             <div className="page-container">
-              <TypographyH2 id="reviews-title">
-                Approved reviews, with workplace context.
-              </TypographyH2>
-              <TypographyP className="section-intro">
-                Read employee experiences that have been reviewed and approved
-                by Contrair.
-              </TypographyP>
-              <div className="review-grid">
+              <MotionFadeIn>
+                <TypographyH2 id="reviews-title">
+                  Approved reviews, with workplace context.
+                </TypographyH2>
+                <TypographyP className="section-intro">
+                  Read employee experiences that have been reviewed and approved
+                  by Contrair.
+                </TypographyP>
+              </MotionFadeIn>
+              <MotionFadeIn delay={0.1} className="review-grid">
                 <ApprovedReviewCards limit={2} />
-              </div>
+              </MotionFadeIn>
             </div>
           </section>
 
@@ -182,7 +206,7 @@ export default function Home() {
             aria-labelledby="privacy-title"
             className="privacy-section section"
           >
-            <div className="page-container privacy-layout">
+            <MotionFadeIn className="page-container privacy-layout">
               <TypographyH2 id="privacy-title">
                 Your experience. Shared on your terms.
               </TypographyH2>
@@ -209,11 +233,11 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </MotionFadeIn>
           </section>
 
           <section aria-labelledby="final-title" className="cta-band">
-            <div className="page-container cta-inner">
+            <MotionFadeIn className="page-container cta-inner">
               <div className="cta-copy">
                 <TypographyH2 className="cta-title" id="final-title">
                   Help someone make a better career decision.
@@ -224,18 +248,20 @@ export default function Home() {
                 </TypographyP>
               </div>
               <div className="cta-actions">
-                <Link
-                  className={cn(buttonVariants({ size: "lg" }), "cta-primary")}
-                  href="/write-review"
-                >
-                  Write an Anonymous Review
-                  <ArrowRight aria-hidden="true" className="size-4" />
-                </Link>
+                <MotionTap className="w-fit">
+                  <Link
+                    className={cn(buttonVariants({ size: "lg" }), "cta-primary")}
+                    href="/write-review"
+                  >
+                    Write an Anonymous Review
+                    <ArrowRight aria-hidden="true" className="size-4" />
+                  </Link>
+                </MotionTap>
                 <Link className="cta-secondary" href="/companies">
                   Find a Company
                 </Link>
               </div>
-            </div>
+            </MotionFadeIn>
           </section>
         </main>
         <SiteFooter />

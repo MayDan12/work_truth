@@ -1211,6 +1211,13 @@
     overflow-y: visible;
   }
 
+  .primary-nav,
+  .primary-nav * {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
   .primary-nav {
     display: flex;
     flex-direction: row;

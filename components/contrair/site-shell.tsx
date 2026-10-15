@@ -7,9 +7,9 @@ export { Brand };
 export function SiteHeader() {
   return (
     <header className="site-header sticky top-0 z-40">
-      <Link className="skip-link" href="#main-content">
+      {/* <Link className="skip-link" href="#main-content">
         Skip to content
-      </Link>
+      </Link> */}
       <div className="page-container site-header-inner">
         <Brand />
         <SiteNavigation />
