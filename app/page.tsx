@@ -101,7 +101,7 @@ export default function Home() {
             </div>
 
             <MotionFadeIn delay={0.2} duration={0.45} viewport={false}>
-              <CompanySearchForm />
+              <CompanySearchForm showSuggestions={true} />
             </MotionFadeIn>
 
             <MotionFadeIn delay={0.28} duration={0.45} viewport={false}>
