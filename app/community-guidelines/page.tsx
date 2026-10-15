@@ -1,5 +1,5 @@
-import { InformationPage } from "@/components/worktruth/info-page"
-import { TypographyH2, TypographyP } from "@/components/worktruth/typography"
+import { InformationPage } from "@/components/contrair/info-page";
+import { TypographyH2, TypographyP } from "@/components/contrair/typography";
 
 export default function CommunityGuidelinesPage() {
   return (
@@ -8,12 +8,14 @@ export default function CommunityGuidelinesPage() {
       title="Community Guidelines"
     >
       <TypographyP>
-        Reviews are checked by a Worktruth admin before they can appear publicly.
+        Reviews are checked by a Contrair admin before they can appear publicly.
         Moderation checks submissions against these guidelines; it does not
         independently verify every statement.
       </TypographyP>
       <section>
-        <TypographyH2 className="text-xl">Share first-hand workplace context</TypographyH2>
+        <TypographyH2 className="text-xl">
+          Share first-hand workplace context
+        </TypographyH2>
         <TypographyP className="mt-2">
           Describe your own experience with culture, management, compensation,
           work-life balance, or career growth. Specific, measured examples help
@@ -21,16 +23,21 @@ export default function CommunityGuidelinesPage() {
         </TypographyP>
       </section>
       <section>
-        <TypographyH2 className="text-xl">Protect yourself and others</TypographyH2>
+        <TypographyH2 className="text-xl">
+          Protect yourself and others
+        </TypographyH2>
         <TypographyP className="mt-2">
           Do not include names, contact details, private personnel information,
           confidential company material, or details that could identify you or
-          another person. Public reviews are not intended to display an author&apos;s
-          identity, but Worktruth cannot promise absolute anonymity.
+          another person. Public reviews are not intended to display an
+          author&apos;s identity, but Contrair cannot promise absolute
+          anonymity.
         </TypographyP>
       </section>
       <section>
-        <TypographyH2 className="text-xl">Keep criticism constructive</TypographyH2>
+        <TypographyH2 className="text-xl">
+          Keep criticism constructive
+        </TypographyH2>
         <TypographyP className="mt-2">
           Focus on workplace practices and your own perspective. Avoid threats,
           harassment, discriminatory language, personal attacks, and claims you
@@ -38,5 +45,5 @@ export default function CommunityGuidelinesPage() {
         </TypographyP>
       </section>
     </InformationPage>
-  )
+  );
 }

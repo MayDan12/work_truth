@@ -1,16 +1,20 @@
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-import { SitePageFrame } from "@/components/worktruth/site-shell"
-import { TypographyH1, TypographyH2, TypographyP } from "@/components/worktruth/typography"
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { SitePageFrame } from "@/components/contrair/site-shell";
+import {
+  TypographyH1,
+  TypographyH2,
+  TypographyP,
+} from "@/components/contrair/typography";
 
 export function InformationPage({
   title,
   description,
   children,
 }: {
-  title: string
-  description: string
-  children: React.ReactNode
+  title: string;
+  description: string;
+  children: React.ReactNode;
 }) {
   return (
     <SitePageFrame>
@@ -20,21 +24,26 @@ export function InformationPage({
           Back to Worktruth
         </Link>
         <div className="mt-8">
-          <TypographyH1 className="text-[clamp(2rem,4vw,3rem)]">{title}</TypographyH1>
+          <TypographyH1 className="text-[clamp(2rem,4vw,3rem)]">
+            {title}
+          </TypographyH1>
           <TypographyP className="section-intro">{description}</TypographyP>
         </div>
         <div className="info-page-content">{children}</div>
-        <aside className="notice-panel" aria-label="Review moderation information">
+        <aside
+          className="notice-panel"
+          aria-label="Review moderation information"
+        >
           <TypographyH2 className="text-base font-semibold tracking-normal">
             How reviews are handled
           </TypographyH2>
           <TypographyP className="mt-2">
-            Review submissions are held for admin moderation and are not publicly
-            visible unless approved. Moderation checks our guidelines; it does not
-            independently verify every statement.
+            Review submissions are held for admin moderation and are not
+            publicly visible unless approved. Moderation checks our guidelines;
+            it does not independently verify every statement.
           </TypographyP>
         </aside>
       </main>
     </SitePageFrame>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
-import { ReviewSubmissionForm } from "@/components/worktruth/review-submission-form"
-import { SitePageFrame } from "@/components/worktruth/site-shell"
-import { TypographyH1, TypographyP } from "@/components/worktruth/typography"
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import { ReviewSubmissionForm } from "@/components/contrair/review-submission-form";
+import { SitePageFrame } from "@/components/contrair/site-shell";
+import { TypographyH1, TypographyP } from "@/components/contrair/typography";
 
 export default function WriteReviewPage() {
   return (
@@ -10,7 +10,7 @@ export default function WriteReviewPage() {
       <main className="page-container info-page" id="main-content">
         <Link className="text-link" href="/">
           <ArrowLeft aria-hidden="true" className="size-4" />
-          Back to Worktruth
+          Back to Contrair
         </Link>
         <div className="mt-8 max-w-[48rem]">
           <TypographyH1 className="text-[clamp(2rem,4vw,3rem)]">
@@ -24,5 +24,5 @@ export default function WriteReviewPage() {
         </div>
       </main>
     </SitePageFrame>
-  )
+  );
 }

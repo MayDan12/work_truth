@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import "client-only"
-import { Timestamp, type DocumentData } from "firebase/firestore"
+import "client-only";
+import { Timestamp, type DocumentData } from "firebase/firestore";
 import {
   getCompanySlug,
   type EmployeeStatus,
   type WorkplaceReview,
-} from "@/lib/worktruth-data"
+} from "@/lib/worktruth-data";
 
 export function parseWorkplaceReview(
   id: string,
@@ -25,7 +25,7 @@ export function parseWorkplaceReview(
     typeof data.cons !== "string" ||
     !(data.createdAt instanceof Timestamp)
   ) {
-    throw new Error(`Review ${id} has an invalid Firestore document shape.`)
+    throw new Error(`Review ${id} has an invalid Firestore document shape.`);
   }
 
   return {
@@ -41,5 +41,5 @@ export function parseWorkplaceReview(
     pros: data.pros,
     cons: data.cons,
     createdAt: data.createdAt.toDate(),
-  }
+  };
 }

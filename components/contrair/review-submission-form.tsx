@@ -1,41 +1,44 @@
-"use client"
+"use client";
 
-import { useState, type FormEvent } from "react"
-import { addDoc, collection, serverTimestamp } from "firebase/firestore"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
-import { Textarea } from "@/components/ui/textarea"
-import { TypographyP } from "@/components/worktruth/typography"
-import { getFirebaseFirestore } from "@/lib/firebase"
-import { getCompanySlug } from "@/lib/worktruth-data"
+import { useState, type FormEvent } from "react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/components/ui/native-select";
+import { Textarea } from "@/components/ui/textarea";
+import { TypographyP } from "@/components/contrair/typography";
+import { getFirebaseFirestore } from "@/lib/firebase";
+import { getCompanySlug } from "@/lib/worktruth-data";
 
 export function ReviewSubmissionForm() {
-  const [pending, setPending] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const [error, setError] = useState("")
+  const [pending, setPending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setPending(true)
-    setSubmitted(false)
-    setError("")
+    event.preventDefault();
+    setPending(true);
+    setSubmitted(false);
+    setError("");
 
-    const form = event.currentTarget
-    const formData = new FormData(form)
-    const companyName = String(formData.get("company") ?? "").trim()
-    const companySlug = getCompanySlug(companyName)
-    const role = String(formData.get("role") ?? "").trim()
-    const employmentStatus = String(formData.get("employmentStatus") ?? "")
-    const rating = Number(formData.get("rating"))
-    const pros = String(formData.get("pros") ?? "").trim()
-    const cons = String(formData.get("cons") ?? "").trim()
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const companyName = String(formData.get("company") ?? "").trim();
+    const companySlug = getCompanySlug(companyName);
+    const role = String(formData.get("role") ?? "").trim();
+    const employmentStatus = String(formData.get("employmentStatus") ?? "");
+    const rating = Number(formData.get("rating"));
+    const pros = String(formData.get("pros") ?? "").trim();
+    const cons = String(formData.get("cons") ?? "").trim();
 
     if (!companySlug) {
-      setError("Enter a company name containing letters or numbers.")
-      setPending(false)
-      return
+      setError("Enter a company name containing letters or numbers.");
+      setPending(false);
+      return;
     }
 
     if (
@@ -47,9 +50,11 @@ export function ReviewSubmissionForm() {
       pros.length < 10 ||
       cons.length < 10
     ) {
-      setError("Complete each field and make both written responses at least 10 characters.")
-      setPending(false)
-      return
+      setError(
+        "Complete each field and make both written responses at least 10 characters.",
+      );
+      setPending(false);
+      return;
     }
 
     try {
@@ -62,16 +67,16 @@ export function ReviewSubmissionForm() {
         cons,
         createdAt: serverTimestamp(),
         moderationStatus: "pending",
-      })
-      form.reset()
-      setSubmitted(true)
+      });
+      form.reset();
+      setSubmitted(true);
     } catch (submissionError) {
-      console.error("Could not submit workplace review.", submissionError)
+      console.error("Could not submit workplace review.", submissionError);
       setError(
         "Your review could not be submitted. Please check your connection and Firebase setup, then try again.",
-      )
+      );
     } finally {
-      setPending(false)
+      setPending(false);
     }
   }
 
@@ -121,16 +126,30 @@ export function ReviewSubmissionForm() {
 
         <div className="form-field">
           <Label htmlFor="review-status">Employment status</Label>
-          <NativeSelect id="review-status" name="employmentStatus" required className="w-full">
+          <NativeSelect
+            id="review-status"
+            name="employmentStatus"
+            required
+            className="w-full"
+          >
             <NativeSelectOption value="">Choose a status</NativeSelectOption>
-            <NativeSelectOption value="Current employee">Current employee</NativeSelectOption>
-            <NativeSelectOption value="Former employee">Former employee</NativeSelectOption>
+            <NativeSelectOption value="Current employee">
+              Current employee
+            </NativeSelectOption>
+            <NativeSelectOption value="Former employee">
+              Former employee
+            </NativeSelectOption>
           </NativeSelect>
         </div>
 
         <div className="form-field">
           <Label htmlFor="review-rating">Overall rating</Label>
-          <NativeSelect id="review-rating" name="rating" required className="w-full">
+          <NativeSelect
+            id="review-rating"
+            name="rating"
+            required
+            className="w-full"
+          >
             <NativeSelectOption value="">Choose a rating</NativeSelectOption>
             {[1, 2, 3, 4, 5].map((rating) => (
               <NativeSelectOption key={rating} value={String(rating)}>
@@ -166,16 +185,26 @@ export function ReviewSubmissionForm() {
           />
         </div>
 
-        {error ? <p className="form-error" role="alert">{error}</p> : null}
-        {submitted ? (
-          <p aria-live="polite" className="form-help" role="status">
-            Your review was submitted for moderation. It will appear on the site only if an admin approves it.
+        {error ? (
+          <p className="form-error" role="alert">
+            {error}
           </p>
         ) : null}
-        <Button className="form-submit" disabled={pending} size="lg" type="submit">
+        {submitted ? (
+          <p aria-live="polite" className="form-help" role="status">
+            Your review was submitted for moderation. It will appear on the site
+            only if an admin approves it.
+          </p>
+        ) : null}
+        <Button
+          className="form-submit"
+          disabled={pending}
+          size="lg"
+          type="submit"
+        >
           {pending ? "Submitting review…" : "Submit review for moderation"}
         </Button>
       </form>
     </div>
-  )
+  );
 }

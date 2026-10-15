@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { cn } from "@/lib/utils"
-import { SiteNavigation } from "@/components/worktruth/site-navigation"
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { SiteNavigation } from "@/components/contrair/site-navigation";
 
 export function Brand({ inverted = false }: { inverted?: boolean }) {
   return (
@@ -9,10 +9,12 @@ export function Brand({ inverted = false }: { inverted?: boolean }) {
       className={cn("brand", inverted && "brand-inverted")}
       href="/"
     >
-      <span aria-hidden="true" className="brand-mark">w</span>
-      <span>Worktruth</span>
+      <span aria-hidden="true" className="brand-mark">
+        c
+      </span>
+      <span>Contrair</span>
     </Link>
-  )
+  );
 }
 
 export function SiteHeader() {
@@ -26,7 +28,7 @@ export function SiteHeader() {
         <SiteNavigation />
       </div>
     </header>
-  )
+  );
 }
 
 const footerLinks = [
@@ -36,7 +38,7 @@ const footerLinks = [
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms of Service" },
   { href: "/contact", label: "Contact" },
-]
+];
 
 export function SiteFooter() {
   return (
@@ -53,12 +55,12 @@ export function SiteFooter() {
           </nav>
         </div>
         <div className="footer-bottom">
-          <p>Worktruth helps people compare workplace experiences with care.</p>
+          <p>Contrair helps people compare workplace experiences with care.</p>
           <p>Reviews are public only after admin approval.</p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
 export function SitePageFrame({ children }: { children: React.ReactNode }) {
@@ -68,5 +70,5 @@ export function SitePageFrame({ children }: { children: React.ReactNode }) {
       {children}
       <SiteFooter />
     </>
-  )
+  );
 }

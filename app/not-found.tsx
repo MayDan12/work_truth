@@ -1,7 +1,7 @@
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-import { SitePageFrame } from "@/components/worktruth/site-shell"
-import { TypographyH1, TypographyP } from "@/components/worktruth/typography"
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { SitePageFrame } from "@/components/contrair/site-shell";
+import { TypographyH1, TypographyP } from "@/components/contrair/typography";
 
 export default function NotFound() {
   return (
@@ -12,7 +12,7 @@ export default function NotFound() {
           That page could not be found.
         </TypographyH1>
         <TypographyP className="section-intro">
-          Try the company directory or head back to the Worktruth home page.
+          Try the company directory or head back to the Contrair home page.
         </TypographyP>
         <div className="mt-6 flex flex-wrap gap-4">
           <Link className="text-link" href="/companies">
@@ -25,5 +25,5 @@ export default function NotFound() {
         </div>
       </main>
     </SitePageFrame>
-  )
+  );
 }

@@ -369,7 +369,6 @@
   }
 
   .sample-preview {
-    max-width: 58.75rem;
     margin: 3.15rem auto 0;
     border: 1px solid var(--border);
     border-radius: 0.45rem;
@@ -1089,7 +1088,7 @@
   }
 
   .approved-overview-reviews {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

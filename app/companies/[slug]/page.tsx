@@ -1,30 +1,30 @@
-import { Suspense } from "react"
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
+import { Suspense } from "react";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import {
   ApprovedCompanyReviewList,
   ApprovedReviewsProvider,
-} from "@/components/worktruth/approved-review-content"
-import { SitePageFrame } from "@/components/worktruth/site-shell"
-import { TypographyH1 } from "@/components/worktruth/typography"
+} from "@/components/contrair/approved-review-content";
+import { SitePageFrame } from "@/components/contrair/site-shell";
+import { TypographyH1 } from "@/components/contrair/typography";
 
 async function CompanyDetails({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
+  const { slug } = await params;
   return (
     <ApprovedReviewsProvider companySlug={slug}>
       <ApprovedCompanyReviewList slug={slug} />
     </ApprovedReviewsProvider>
-  )
+  );
 }
 
 export default function CompanyPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
   return (
     <SitePageFrame>
@@ -44,5 +44,5 @@ export default function CompanyPage({
         </Suspense>
       </main>
     </SitePageFrame>
-  )
+  );
 }
