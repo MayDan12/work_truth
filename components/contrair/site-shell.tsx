@@ -1,25 +1,12 @@
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { SiteNavigation } from "@/components/contrair/site-navigation";
+import { Brand } from "@/components/contrair/brand";
 
-export function Brand({ inverted = false }: { inverted?: boolean }) {
-  return (
-    <Link
-      aria-label="Worktruth home"
-      className={cn("brand", inverted && "brand-inverted")}
-      href="/"
-    >
-      <span aria-hidden="true" className="brand-mark">
-        c
-      </span>
-      <span>Contrair</span>
-    </Link>
-  );
-}
+export { Brand };
 
 export function SiteHeader() {
   return (
-    <header className="site-header">
+    <header className="site-header sticky top-0 z-40">
       <Link className="skip-link" href="#main-content">
         Skip to content
       </Link>
