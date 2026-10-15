@@ -6,17 +6,17 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  appId: process.env.FIREBASE_APP_ID,
 };
 
 const requiredConfig = [
-  ["NEXT_PUBLIC_FIREBASE_API_KEY", firebaseConfig.apiKey],
-  ["NEXT_PUBLIC_FIREBASE_PROJECT_ID", firebaseConfig.projectId],
-  ["NEXT_PUBLIC_FIREBASE_APP_ID", firebaseConfig.appId],
-  ["NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN", firebaseConfig.authDomain],
+  ["FIREBASE_API_KEY", firebaseConfig.apiKey],
+  ["FIREBASE_PROJECT_ID", firebaseConfig.projectId],
+  ["FIREBASE_APP_ID", firebaseConfig.appId],
+  ["FIREBASE_AUTH_DOMAIN", firebaseConfig.authDomain],
 ] as const;
 
 function getFirebaseApp(): FirebaseApp {
