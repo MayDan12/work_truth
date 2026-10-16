@@ -74,6 +74,7 @@ export default function Home() {
       <div className="site-page">
         <SiteHeader />
         <main id="main-content">
+          {/* Hero Section */}
           <section
             aria-labelledby="hero-title"
             className="page-container hero-section"
@@ -140,6 +141,7 @@ export default function Home() {
             </MotionFadeIn>
           </section>
 
+          {/* Values Section */}
           <section
             aria-labelledby="values-title"
             className="page-container section"
@@ -166,31 +168,7 @@ export default function Home() {
             </MotionStagger>
           </section>
 
-          <section
-            aria-labelledby="how-title"
-            className="how-section section"
-            id="how-it-works"
-          >
-            <div className="page-container">
-              <MotionFadeIn>
-                <TypographyH2 id="how-title">How it works</TypographyH2>
-              </MotionFadeIn>
-              <MotionStagger as="ol" className="steps-list">
-                {processSteps.map((step, index) => (
-                  <MotionStaggerItem
-                    as="li"
-                    className="step-item"
-                    key={step.title}
-                  >
-                    <span className="step-number">0{index + 1}</span>
-                    <TypographyH3>{step.title}</TypographyH3>
-                    <TypographyP>{step.description}</TypographyP>
-                  </MotionStaggerItem>
-                ))}
-              </MotionStagger>
-            </div>
-          </section>
-
+          {/* Discovery Section */}
           <section
             aria-labelledby="discovery-title"
             className="page-container section"
@@ -217,6 +195,33 @@ export default function Home() {
             </MotionFadeIn>
           </section>
 
+          {/* How it Works Section */}
+          <section
+            aria-labelledby="how-title"
+            className="how-section section"
+            id="how-it-works"
+          >
+            <div className="page-container">
+              <MotionFadeIn>
+                <TypographyH2 id="how-title">How it works</TypographyH2>
+              </MotionFadeIn>
+              <MotionStagger as="ol" className="steps-list">
+                {processSteps.map((step, index) => (
+                  <MotionStaggerItem
+                    as="li"
+                    className="step-item"
+                    key={step.title}
+                  >
+                    <span className="step-number">0{index + 1}</span>
+                    <TypographyH3>{step.title}</TypographyH3>
+                    <TypographyP>{step.description}</TypographyP>
+                  </MotionStaggerItem>
+                ))}
+              </MotionStagger>
+            </div>
+          </section>
+
+          {/* Reviews Section */}
           <section
             aria-labelledby="reviews-title"
             className="review-section section"
@@ -237,6 +242,7 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Privacy Section */}
           <section
             aria-labelledby="privacy-title"
             className="privacy-section section"
@@ -271,6 +277,7 @@ export default function Home() {
             </MotionFadeIn>
           </section>
 
+          {/* Call to Action Section */}
           <section aria-labelledby="final-title" className="cta-band">
             <MotionFadeIn className="page-container cta-inner">
               <div className="cta-copy">
