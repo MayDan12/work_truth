@@ -29,6 +29,7 @@ import {
   MotionTap,
 } from "@/components/contrair/motion-wrappers";
 import { InquisitiveBlobatar } from "@/components/contrair/inquisitive-blobatar";
+import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
 
 const benefits = [
   {
@@ -77,7 +78,19 @@ export default function Home() {
             aria-labelledby="hero-title"
             className="page-container hero-section"
           >
-            <div className="hero-copy text-center">
+            <InteractiveGridPattern
+              className={cn(
+                "mask-[radial-gradient(600px_circle_at_center,white,transparent)]",
+                "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
+                "pointer-events-none",
+              )}
+              squaresClassName="hover:fill-primary/30"
+              width={90}
+              height={30}
+              squares={[30, 30]}
+            />
+
+            <div className="hero-copy text-center relative">
               <MotionFadeIn
                 delay={0.02}
                 duration={0.45}
@@ -100,7 +113,12 @@ export default function Home() {
               </MotionFadeIn>
             </div>
 
-            <MotionFadeIn delay={0.2} duration={0.45} viewport={false}>
+            <MotionFadeIn
+              className="relative "
+              delay={0.2}
+              duration={0.45}
+              viewport={false}
+            >
               <CompanySearchForm showSuggestions={true} />
             </MotionFadeIn>
 
