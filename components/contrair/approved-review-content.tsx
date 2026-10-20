@@ -211,11 +211,11 @@ export function ApprovedOverview() {
       <header className="sample-preview-head">
         <div>
           <TypographyH2 className="text-[1.3rem]" id="approved-overview-title">
-            Recently approved workplace reviews
+            Recentworkplace reviews
           </TypographyH2>
-          <p className="sample-company-meta">
+          {/* <p className="sample-company-meta">
             Only reviews approved by Contrair appear here.
-          </p>
+          </p> */}
         </div>
       </header>
       <ReviewLoadState error={error} loading={false} />
@@ -240,7 +240,7 @@ export function ApprovedOverview() {
       {companies.length > 0 ? (
         <p className="sample-company-meta">
           {companies.length} {companies.length === 1 ? "company" : "companies"}{" "}
-          with approved reviews
+          reviews
         </p>
       ) : null}
     </article>
