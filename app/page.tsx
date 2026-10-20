@@ -45,8 +45,8 @@ const benefits = [
   },
   {
     icon: ClipboardCheck,
-    title: "Human-Reviewed Feedback",
-    description: "Every review is moderated by a person before publication.",
+    title: "",
+    description: "",
   },
 ];
 
