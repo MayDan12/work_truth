@@ -38,11 +38,9 @@ export function InformationPage({
             How reviews are handled
           </TypographyH2>
           <TypographyP className="mt-2">
-            GistHQ does not ask reviewers to create an account or provide
-            their name in the review form. Every submission is automatically
-            moderated before publication. Moderation helps us apply our
-            community guidelines; it does not independently verify every
-            statement.
+            Reviews are submitted without an account and held for human review
+            before publication. Moderation checks our community guidelines; it
+            does not independently verify every statement.
           </TypographyP>
         </aside>
       </main>

@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,7 +11,6 @@ import {
   NativeSelectOption,
 } from "@/components/ui/native-select";
 import { Textarea } from "@/components/ui/textarea";
-import { TypographyP } from "@/components/contrair/typography";
 import { getFirebaseFirestore } from "@/lib/firebase";
 import { getCompanySlug } from "@/lib/worktruth-data";
 
@@ -34,6 +34,7 @@ export function ReviewSubmissionForm() {
     const rating = Number(formData.get("rating"));
     const pros = String(formData.get("pros") ?? "").trim();
     const cons = String(formData.get("cons") ?? "").trim();
+    const acceptedTerms = formData.get("acceptedTerms") === "on";
 
     if (!companySlug) {
       setError("Enter a company name containing letters or numbers.");
@@ -48,10 +49,11 @@ export function ReviewSubmissionForm() {
       rating < 1 ||
       rating > 5 ||
       pros.length < 10 ||
-      cons.length < 10
+      cons.length < 10 ||
+      !acceptedTerms
     ) {
       setError(
-        "Complete each field and make both written responses at least 10 characters.",
+        "Complete each field, make both written responses at least 10 characters, and accept the Terms of Service and Community Guidelines.",
       );
       setPending(false);
       return;
@@ -82,15 +84,6 @@ export function ReviewSubmissionForm() {
 
   return (
     <div>
-      {/* <div className="notice-panel" id="review-form-privacy-note">
-        <TypographyP>
-          Your review is sent to GistHQ for moderation. It is not visible on
-          the site unless it is approved. We do not ask for your name or account
-          details; avoid details in your review that could identify you or
-          another person.
-        </TypographyP>
-      </div> */}
-
       <form
         aria-describedby="review-form-privacy-note"
         className="review-form"
@@ -183,6 +176,38 @@ export function ReviewSubmissionForm() {
             required
             rows={4}
           />
+        </div>
+
+        <div className="form-field">
+          <div className="flex items-start gap-3">
+            <input
+              className="mt-1 size-4 shrink-0 accent-primary"
+              id="review-terms"
+              name="acceptedTerms"
+              required
+              type="checkbox"
+            />
+            <Label
+              className="cursor-pointer text-sm leading-relaxed font-normal"
+              htmlFor="review-terms"
+            >
+              I confirm this review reflects my genuine, first-hand workplace
+              experience and agree to the Terms of Service and Community
+              Guidelines.
+            </Label>
+          </div>
+          <p className="form-help" id="review-form-privacy-note">
+            Read the{" "}
+            <Link className="text-link" href="/terms">
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link className="text-link" href="/community-guidelines">
+              Community Guidelines
+            </Link>
+            . Do not include names, identifying details, or confidential
+            information.
+          </p>
         </div>
 
         {error ? (
