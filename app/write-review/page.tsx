@@ -10,7 +10,7 @@ export default function WriteReviewPage() {
       <main className="page-container info-page" id="main-content">
         <Link className="text-link" href="/">
           <ArrowLeft aria-hidden="true" className="size-4" />
-          Back to Contrair
+          Back to GistHQ
         </Link>
         <div className="mt-8 max-w-[48rem]">
           <TypographyH1 className="text-[clamp(2rem,4vw,3rem)]">

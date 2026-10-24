@@ -84,7 +84,7 @@ export function ReviewSubmissionForm() {
     <div>
       {/* <div className="notice-panel" id="review-form-privacy-note">
         <TypographyP>
-          Your review is sent to Contrair for moderation. It is not visible on
+          Your review is sent to GistHQ for moderation. It is not visible on
           the site unless it is approved. We do not ask for your name or account
           details; avoid details in your review that could identify you or
           another person.
@@ -193,7 +193,7 @@ export function ReviewSubmissionForm() {
         {submitted ? (
           <p aria-live="polite" className="form-help" role="status">
             Your review was submitted for moderation. It will appear on the site
-            only if Contrair approves it.
+            only if GistHQ approves it.
           </p>
         ) : null}
         <Button

@@ -21,7 +21,7 @@ export function InformationPage({
       <main className="page-container info-page" id="main-content">
         <Link className="text-link" href="/">
           <ArrowLeft aria-hidden="true" className="size-4" />
-          Back to Worktruth
+          Back to GistHQ
         </Link>
         <div className="mt-8">
           <TypographyH1 className="text-[clamp(2rem,4vw,3rem)]">
@@ -38,9 +38,11 @@ export function InformationPage({
             How reviews are handled
           </TypographyH2>
           <TypographyP className="mt-2">
-            Review submissions are held for moderation and are not publicly
-            visible unless approved. Moderation checks our guidelines; it does
-            not independently verify every statement.
+            GistHQ does not ask reviewers to create an account or provide
+            their name in the review form. Every submission is automatically
+            moderated before publication. Moderation helps us apply our
+            community guidelines; it does not independently verify every
+            statement.
           </TypographyP>
         </aside>
       </main>

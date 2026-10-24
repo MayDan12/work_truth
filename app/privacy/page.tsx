@@ -8,7 +8,7 @@ export default function PrivacyPage() {
       title="Privacy Policy"
     >
       <TypographyP>
-        Contrair does not ask reviewers to create an account or provide their
+        GistHQ does not ask reviewers to create an account or provide their
         name in the review form. This page is a summary and must be completed
         with the service&apos;s final retention, deletion, contact, and legal
         information before launch.
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
         <TypographyP className="mt-2">
           When you submit a review, its company name, broad job title,
           employment status, rating, and written feedback are stored in the
-          Contrair database. Pending and rejected reviews are not shown
+          GistHQ database. Pending and rejected reviews are not shown
           publicly.
         </TypographyP>
       </section>

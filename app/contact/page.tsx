@@ -6,7 +6,7 @@ export default function ContactPage() {
   return (
     <InformationPage
       description="A contact route is present so visitors can find the right next step."
-      title="Contact Contrair"
+      title="Contact GistHQ"
     >
       <section>
         <TypographyH2 className="text-xl">

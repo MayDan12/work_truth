@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ScreenFitText } from "@/components/fittocontain";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,9 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Contrair — Know what it’s really like to work there",
+  title: "GistHQ — Know what it’s really like to work there",
   description:
-    "Explore workplace reviews and learn how Contrair helps people research Nigerian companies before a career move.",
+    "Explore workplace reviews and learn how GistHQ helps people research Nigerian companies before a career move.",
+  icons: {
+    icon: "/gisthq_logo.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -25,7 +29,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full font-sans">{children}</body>
+      <body className="min-h-full font-sans">
+        {children}
+        <ScreenFitText />
+      </body>
     </html>
   );
 }

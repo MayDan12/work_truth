@@ -36,7 +36,7 @@ export default function CompaniesPage({
           Explore companies
         </TypographyH1>
         <TypographyP className="section-intro">
-          Search companies with workplace reviews approved by Contrair.
+          Search companies with workplace reviews approved by GistHQ.
         </TypographyP>
         <Suspense fallback={<CompanyDirectorySkeleton />}>
           <CompanyResults searchParams={searchParams} />

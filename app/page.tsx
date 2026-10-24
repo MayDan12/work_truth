@@ -45,8 +45,9 @@ const benefits = [
   },
   {
     icon: ClipboardCheck,
-    title: "",
-    description: "",
+    title: "Moderated for Quality",
+    description:
+      "Submissions are automatically moderated to ensure they meet our community guidelines before publication.",
   },
 ];
 

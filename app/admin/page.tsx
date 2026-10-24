@@ -254,7 +254,7 @@ export default function AdminPage() {
     <SitePageFrame>
       <main className="page-container info-page" id="main-content">
         <Link className="text-link" href="/">
-          Back to Contrair
+          Back to GistHQ
         </Link>
         <TypographyH1 className="mt-8 text-[clamp(2rem,4vw,3rem)]">
           Review moderation

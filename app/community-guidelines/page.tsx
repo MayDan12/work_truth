@@ -8,7 +8,7 @@ export default function CommunityGuidelinesPage() {
       title="Community Guidelines"
     >
       <TypographyP>
-        Reviews are checked by Contrair before they can appear publicly.
+        Reviews are checked by GistHQ before they can appear publicly.
         Moderation checks submissions against these guidelines; it does not
         independently verify every statement.
       </TypographyP>
@@ -30,7 +30,7 @@ export default function CommunityGuidelinesPage() {
           Do not include names, contact details, private personnel information,
           confidential company material, or details that could identify you or
           another person. Public reviews are not intended to display an
-          author&apos;s identity, but Contrair cannot promise absolute
+          author&apos;s identity, but GistHQ cannot promise absolute
           anonymity.
         </TypographyP>
       </section>

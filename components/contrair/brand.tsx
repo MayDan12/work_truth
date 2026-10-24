@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -10,16 +11,21 @@ export function Brand({
 }) {
   return (
     <Link
-      aria-label="Worktruth home"
+      aria-label="GistHQ home"
       className={cn("brand", inverted && "brand-inverted")}
       href="/"
       onClick={onClick}
     >
-      <span aria-hidden="true" className="brand-mark">
-        c
+      <Image
+        alt=""
+        className="brand-mark"
+        height={36}
+        src="/gisthq_logo.png"
+        width={36}
+      />
+      <span>
+        Gist<span className="text-primary">HQ</span>
       </span>
-      <span>Contrair</span>
     </Link>
   );
 }
-

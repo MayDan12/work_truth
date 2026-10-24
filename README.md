@@ -22,7 +22,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Firebase setup
 
-Worktruth stores user submissions in Cloud Firestore. Reviewers do not need an
+GistHQ stores user submissions in Cloud Firestore. Reviewers do not need an
 account. New submissions are marked `pending`, visible only to admins, and
 appear in public company listings only after an admin approves them.
 

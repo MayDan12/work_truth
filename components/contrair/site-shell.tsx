@@ -42,8 +42,8 @@ export function SiteFooter() {
           </nav>
         </div>
         <div className="footer-bottom">
-          <p>Contrair helps people compare workplace experiences with care.</p>
-          <p>Reviews are public only after Contrair approval.</p>
+          <p>GistHQ helps people compare workplace experiences with care.</p>
+          <p>Reviews are public only after GistHQ approval.</p>
         </div>
       </div>
     </footer>

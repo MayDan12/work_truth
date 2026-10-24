@@ -165,23 +165,16 @@
     align-items: center;
     gap: 0.625rem;
     color: var(--foreground);
-    font-size: 1.1875rem;
+    font-size: 1.5rem;
     font-weight: 650;
     letter-spacing: -0.065em;
     text-decoration: none;
   }
 
   .brand-mark {
-    display: grid;
-    width: 1.55rem;
-    height: 1.55rem;
-    place-items: center;
-    border: 1.5px solid var(--primary);
-    border-radius: 999px;
-    color: var(--primary);
-    font-size: 0.82rem;
-    font-weight: 600;
-    line-height: 1;
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
   }
 
   .site-navigation {

@@ -12,7 +12,7 @@ export default function NotFound() {
           That page could not be found.
         </TypographyH1>
         <TypographyP className="section-intro">
-          Try the company directory or head back to the Contrair home page.
+          Try the company directory or head back to the GistHQ home page.
         </TypographyP>
         <div className="mt-6 flex flex-wrap gap-4">
           <Link className="text-link" href="/companies">

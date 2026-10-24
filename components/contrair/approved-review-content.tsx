@@ -214,7 +214,7 @@ export function ApprovedOverview() {
             Recent workplace reviews
           </TypographyH2>
           {/* <p className="sample-company-meta">
-            Only reviews approved by Contrair appear here.
+            Only reviews approved by GistHQ appear here.
           </p> */}
         </div>
       </header>
