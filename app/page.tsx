@@ -63,8 +63,7 @@ const processSteps = [
   },
   {
     title: "Share your own experience anonymously.",
-    description:
-      "Write without an account. Every review is moderated by a person before publication.",
+    description: "Write without an account. ",
   },
 ];
 
