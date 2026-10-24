@@ -17,8 +17,8 @@ export default function WriteReviewPage() {
             Share your workplace experience.
           </TypographyH1>
           <TypographyP className="section-intro">
-            No account is needed to submit a review. Every submission is held
-            for moderation and appears publicly only if approved.
+            No account is needed to submit a review. Every submission appears
+            publicly.
           </TypographyP>
           <ReviewSubmissionForm />
         </div>

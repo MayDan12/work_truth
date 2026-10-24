@@ -689,7 +689,7 @@
     border: 1px solid var(--border);
     border-radius: 0.4rem;
     background: var(--card);
-    padding: clamp(1.1rem, 2vw, 1.2rem);
+    padding: clamp(1.1rem, 2vw, 1rem);
   }
 
   .review-card-header {
@@ -1082,7 +1082,9 @@
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 150ms ease, border-color 150ms ease;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
   }
 
   .site-navigation-toggle:hover {
@@ -1126,7 +1128,9 @@
     transform: translateX(100%);
     visibility: hidden;
     pointer-events: none;
-    transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), visibility 260ms;
+    transition:
+      transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 260ms;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -1157,7 +1161,9 @@
     background: transparent;
     color: var(--foreground);
     cursor: pointer;
-    transition: background-color 150ms ease, border-color 150ms ease;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
   }
 
   .site-navigation-close:hover {
@@ -1180,7 +1186,9 @@
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--foreground);
-    transition: background-color 150ms ease, color 150ms ease;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
   }
 
   .primary-nav .nav-link:hover {

@@ -82,14 +82,14 @@ export function ReviewSubmissionForm() {
 
   return (
     <div>
-      <div className="notice-panel" id="review-form-privacy-note">
+      {/* <div className="notice-panel" id="review-form-privacy-note">
         <TypographyP>
           Your review is sent to Contrair for moderation. It is not visible on
           the site unless it is approved. We do not ask for your name or account
           details; avoid details in your review that could identify you or
           another person.
         </TypographyP>
-      </div>
+      </div> */}
 
       <form
         aria-describedby="review-form-privacy-note"
@@ -228,7 +228,7 @@ export function ReviewSubmissionForm() {
               <span>Submitting review…</span>
             </span>
           ) : (
-            "Submit review for moderation"
+            "Submit review "
           )}
         </Button>
       </form>

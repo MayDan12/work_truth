@@ -211,7 +211,7 @@ export function ApprovedOverview() {
       <header className="sample-preview-head">
         <div>
           <TypographyH2 className="text-[1.3rem]" id="approved-overview-title">
-            Recentworkplace reviews
+            Recent workplace reviews
           </TypographyH2>
           {/* <p className="sample-company-meta">
             Only reviews approved by Contrair appear here.
@@ -221,9 +221,7 @@ export function ApprovedOverview() {
       <ReviewLoadState error={error} loading={false} />
       {!error && reviews.length === 0 ? (
         <div className="empty-state">
-          <TypographyH2 className="text-[1.2rem]">
-            No approved reviews yet
-          </TypographyH2>
+          <TypographyH2 className="text-[1.2rem]">No reviews yet</TypographyH2>
           <TypographyP>
             Be the first to share a workplace experience.
           </TypographyP>
@@ -249,7 +247,7 @@ export function ApprovedOverview() {
 
 export function ApprovedCompanyCards({
   limit,
-  emptyMessage = "Companies appear here after their first review is approved.",
+  emptyMessage = "Companies appear here after their first review is submitted.",
 }: {
   limit?: number;
   emptyMessage?: string;
@@ -290,9 +288,7 @@ export function ApprovedReviewCards({ limit }: { limit?: number }) {
         <ReviewCard key={review.id} review={review} />
       ))}
       {!error && reviews.length === 0 ? (
-        <p className="empty-state">
-          No approved reviews yet. Approved reviews will appear here.
-        </p>
+        <p className="empty-state">No reviews yet. Reviews will appear here.</p>
       ) : null}
     </>
   );
@@ -333,16 +329,16 @@ export function ApprovedCompanyDirectory({
       </div>
       <p aria-live="polite" className="results-summary">
         {error
-          ? "Approved reviews are unavailable."
+          ? "Reviews are unavailable."
           : normalizedQuery
-            ? `${results.length} ${results.length === 1 ? "company" : "companies"} with approved reviews match “${initialQuery.trim()}”.`
-            : `${companies.length} ${companies.length === 1 ? "company" : "companies"} with approved reviews.`}
+            ? `${results.length} ${results.length === 1 ? "company" : "companies"} with reviews match “${initialQuery.trim()}”.`
+            : `${companies.length} ${companies.length === 1 ? "company" : "companies"} with reviews.`}
       </p>
       {error ? <ReviewLoadState error={error} loading={false} /> : null}
       {!error && results.length > 0 ? (
         <section aria-labelledby="company-results-title">
           <h2 className="sr-only" id="company-results-title">
-            Companies with approved reviews
+            Companies with reviews
           </h2>
           <div className="company-grid">
             {results.map((company) => (
@@ -355,13 +351,13 @@ export function ApprovedCompanyDirectory({
         <section aria-labelledby="empty-title" className="empty-state">
           <TypographyH2 className="text-[1.35rem]" id="empty-title">
             {normalizedQuery
-              ? "No approved reviews match that company."
-              : "No approved reviews yet."}
+              ? "No reviews match that company."
+              : "No reviews yet."}
           </TypographyH2>
           <TypographyP>
             {normalizedQuery
               ? "Try another company name or browse the directory again."
-              : "Companies will be listed after Contrair approves their first review."}
+              : "Companies will be listed after a review is submitted."}
           </TypographyP>
           {normalizedQuery ? (
             <Link className="text-link mt-4" href="/companies">
@@ -410,7 +406,7 @@ export function ApprovedCompanyReviewList({ slug }: { slug: string }) {
       </section>
       <section aria-labelledby="company-reviews-title" className="mt-12">
         <TypographyH2 id="company-reviews-title">
-          Approved workplace reviews
+          Workplace reviews
         </TypographyH2>
         <ReviewLoadState error={error} loading={false} />
         {!error && reviews.length > 0 ? (
@@ -423,10 +419,10 @@ export function ApprovedCompanyReviewList({ slug }: { slug: string }) {
         {!error && reviews.length === 0 ? (
           <div className="empty-state">
             <TypographyH2 className="text-[1.25rem]">
-              No approved reviews for this company
+              No reviews for this company
             </TypographyH2>
             <TypographyP>
-              Reviews appear here only after Contrair has approved them.
+              Reviews appear here only after a review is submitted.
             </TypographyP>
             <Link className="text-link mt-4" href="/write-review">
               Share a workplace review

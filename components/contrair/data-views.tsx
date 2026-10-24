@@ -25,7 +25,7 @@ export function Rating({
       <Star aria-hidden="true" className="rating-star" fill="currentColor" />
       <strong>{value.toFixed(1)}</strong>
       <span>
-        {count} approved {count === 1 ? "review" : "reviews"}
+        {count} {count === 1 ? "review" : "reviews"}
       </span>
     </span>
   );
@@ -41,7 +41,7 @@ export function CompanyCard({ company }: { company: Company }) {
       </TypographyH3>
       <Rating count={company.reviews.length} value={rating} />
       <TypographyP className="company-record-summary">
-        {company.reviews.length} Approved workplace{" "}
+        {company.reviews.length} workplace{" "}
         {company.reviews.length === 1 ? "review" : "reviews"}.
       </TypographyP>
       <ArrowUpRight aria-hidden="true" className="company-record-arrow" />

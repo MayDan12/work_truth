@@ -188,7 +188,7 @@ export default function Home() {
             </MotionFadeIn>
             <MotionFadeIn delay={0.1}>
               <ApprovedCompanyCards
-                emptyMessage="No companies appear until a workplace review is approved."
+                emptyMessage="No companies appear until a workplace review is submitted."
                 limit={6}
               />
             </MotionFadeIn>
@@ -228,11 +228,12 @@ export default function Home() {
             <div className="page-container">
               <MotionFadeIn>
                 <TypographyH2 id="reviews-title">
-                  Approved reviews, with workplace context.
+                  Reviews, with workplace context.
                 </TypographyH2>
                 <TypographyP className="section-intro">
-                  Read employee experiences that have been reviewed and approved
-                  by Contrair.
+                  Read employee experiences to understand the culture,
+                  management, compensation and benefits, work-life balance, and
+                  career growth at Nigerian technology companies.
                 </TypographyP>
               </MotionFadeIn>
               <MotionFadeIn delay={0.1} className="review-grid">
@@ -254,7 +255,7 @@ export default function Home() {
                 <TypographyP>
                   You don&apos;t need an account to submit a review. Public
                   reviews do not display the author&apos;s identity. Every
-                  submission is manually moderated before publication.
+                  submission is automatically moderated before publication.
                 </TypographyP>
                 <TypographyP>
                   Moderation helps us apply our community guidelines; it does
