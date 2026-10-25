@@ -109,8 +109,8 @@ export default function Home() {
                 <MotionFadeIn delay={0.18} duration={0.7} viewport={false}>
                   <TypographyP className="hero-description">
                     Honest workplace experiences from people who have been
-                    there. Research Nigerian tech companies before you make
-                    your next career move.
+                    there. Research Nigerian tech companies before you make your
+                    next career move.
                   </TypographyP>
                 </MotionFadeIn>
               </div>
@@ -182,6 +182,32 @@ export default function Home() {
             </MotionStagger>
           </section>
 
+          {/* How it Works Section */}
+          <section
+            aria-labelledby="how-title"
+            className="how-section section"
+            id="how-it-works"
+          >
+            <div className="page-container">
+              <MotionFadeIn>
+                <TypographyH2 id="how-title">How it works</TypographyH2>
+              </MotionFadeIn>
+              <MotionStagger as="ol" className="steps-list">
+                {processSteps.map((step, index) => (
+                  <MotionStaggerItem
+                    as="li"
+                    className="step-item"
+                    key={step.title}
+                  >
+                    <span className="step-number">0{index + 1}</span>
+                    <TypographyH3>{step.title}</TypographyH3>
+                    <TypographyP>{step.description}</TypographyP>
+                  </MotionStaggerItem>
+                ))}
+              </MotionStagger>
+            </div>
+          </section>
+
           {/* Discovery Section */}
           <section
             aria-labelledby="discovery-title"
@@ -207,32 +233,6 @@ export default function Home() {
                 limit={6}
               />
             </MotionFadeIn>
-          </section>
-
-          {/* How it Works Section */}
-          <section
-            aria-labelledby="how-title"
-            className="how-section section"
-            id="how-it-works"
-          >
-            <div className="page-container">
-              <MotionFadeIn>
-                <TypographyH2 id="how-title">How it works</TypographyH2>
-              </MotionFadeIn>
-              <MotionStagger as="ol" className="steps-list">
-                {processSteps.map((step, index) => (
-                  <MotionStaggerItem
-                    as="li"
-                    className="step-item"
-                    key={step.title}
-                  >
-                    <span className="step-number">0{index + 1}</span>
-                    <TypographyH3>{step.title}</TypographyH3>
-                    <TypographyP>{step.description}</TypographyP>
-                  </MotionStaggerItem>
-                ))}
-              </MotionStagger>
-            </div>
           </section>
 
           {/* Reviews Section */}
