@@ -28,6 +28,7 @@ export function ReviewSubmissionForm() {
   const [pending, setPending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [notificationError, setNotificationError] = useState("");
   const [confirmationOpen, setConfirmationOpen] = useState(false);
   const [formToSubmit, setFormToSubmit] = useState<HTMLFormElement | null>(
     null,
@@ -50,6 +51,7 @@ export function ReviewSubmissionForm() {
     setPending(true);
     setSubmitted(false);
     setError("");
+    setNotificationError("");
 
     const form = formToSubmit;
     const formData = new FormData(form);
@@ -102,6 +104,39 @@ export function ReviewSubmissionForm() {
       setFormToSubmit(null);
       setSubmitted(true);
       setConfirmationOpen(false);
+
+      try {
+        const notificationResponse = await fetch("/api/review-notification", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            companyName,
+            role,
+            employmentStatus,
+            rating,
+            pros,
+            cons,
+          }),
+        });
+
+        if (!notificationResponse.ok) {
+          console.error(
+            "Could not send workplace review notification.",
+            notificationResponse.status,
+          );
+          setNotificationError(
+            "Your review was submitted, but GistHQ could not be notified by email.",
+          );
+        }
+      } catch (notificationSubmissionError) {
+        console.error(
+          "Could not send workplace review notification.",
+          notificationSubmissionError,
+        );
+        setNotificationError(
+          "Your review was submitted, but GistHQ could not be notified by email.",
+        );
+      }
     } catch (submissionError) {
       console.error("Could not submit workplace review.", submissionError);
       setError(
@@ -254,6 +289,11 @@ export function ReviewSubmissionForm() {
           <p aria-live="polite" className="form-help" role="status">
             Your review was submitted for moderation. It will appear on the site
             only if GistHQ approves it.
+          </p>
+        ) : null}
+        {notificationError ? (
+          <p className="form-error" role="alert">
+            {notificationError}
           </p>
         ) : null}
         <Button
