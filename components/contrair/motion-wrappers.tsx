@@ -18,7 +18,7 @@ export function MotionFadeIn({
   children,
   className,
   delay = 0,
-  duration = 0.45,
+  duration = 0.65,
   yOffset = 14,
   viewport = true,
   ...props
@@ -77,7 +77,7 @@ interface MotionStaggerProps {
 export function MotionStagger({
   children,
   className,
-  staggerDelay = 0.09,
+  staggerDelay = 0.13,
   delay = 0,
   viewportOnce = true,
   as = "div",
@@ -134,7 +134,7 @@ export function MotionStaggerItem({
         opacity: 1,
         y: 0,
         transition: {
-          duration: shouldReduceMotion ? 0.01 : 0.42,
+          duration: shouldReduceMotion ? 0.01 : 0.6,
           ease: editorialEase,
         },
       },

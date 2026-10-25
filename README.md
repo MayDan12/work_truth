@@ -34,14 +34,15 @@ appear in public company listings only after an admin approves them.
 2. Copy `.env.example` to `.env.local` and enter the Web app's `apiKey`,
    `authDomain`, `projectId`, and `appId`. Restart the Next.js development
    server after changing environment values.
-3. In Firebase Console, open **Firestore Database → Rules**, replace the
-   editor contents with [`firestore.rules`](./firestore.rules), then click
-   **Publish**. The rules let unauthenticated visitors submit schema-validated
-   pending reviews and read approved reviews. All other public reads and writes
-   are denied. Admins can read the moderation queue and change a pending
-   review's moderation status.
-4. Open **Firestore Database → Indexes → Composite → Add index**. Create these
-   two indexes for the `reviews` collection, both with **Query scope: Collection**:
+3. Firestore security rules are currently managed in Firebase Console. Confirm
+   that the deployed rules allow public review submissions only as `pending`,
+   allow public reads only for approved reviews, and restrict moderation
+   actions to authorized admins. The rule source is not currently checked into
+   this repository; export and review it before relying on a CLI deployment or
+   setting up another Firebase project.
+4. The composite indexes for the `reviews` collection are also managed in
+   Firebase Console. Confirm that both indexes are enabled, with **Query
+   scope: Collection**:
 
    | Collection ID | Field | Order |
    | --- | --- | --- |
@@ -55,8 +56,8 @@ appear in public company listings only after an admin approves them.
    |  | `createdAt` | Descending |
 
    Leave **Array contains** unused. Wait for each index to show **Enabled**
-   before testing the review pages. The same index definitions are recorded in
-   [`firestore.indexes.json`](./firestore.indexes.json).
+   before testing the review pages. Index definitions are not currently
+   checked into this repository.
 
 ### Set up an admin
 

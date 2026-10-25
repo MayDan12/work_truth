@@ -192,8 +192,8 @@ export function ReviewSubmissionForm() {
               htmlFor="review-terms"
             >
               I confirm this review reflects my genuine, first-hand workplace
-              experience and agree to the Terms of Service and Community
-              Guidelines.
+              experience, agree to the Terms of Service and Community
+              Guidelines, and have read the Privacy Policy.
             </Label>
           </div>
           <p className="form-help" id="review-form-privacy-note">
@@ -204,6 +204,10 @@ export function ReviewSubmissionForm() {
             and{" "}
             <Link className="text-link" href="/community-guidelines">
               Community Guidelines
+            </Link>
+            , and{" "}
+            <Link className="text-link" href="/privacy">
+              Privacy Policy
             </Link>
             . Do not include names, identifying details, or confidential
             information.

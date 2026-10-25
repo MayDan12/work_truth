@@ -91,39 +91,53 @@ export default function Home() {
               squares={[30, 30]}
             />
 
-            <div className="hero-copy text-center relative">
+            <div className="hero-copy relative">
+              <div className="hero-copy-main">
+                <MotionFadeIn
+                  delay={0.08}
+                  duration={0.7}
+                  viewport={false}
+                  className="hero-eyebrow"
+                >
+                  <span>A clearer view of work in Nigerian tech</span>
+                </MotionFadeIn>
+                <MotionFadeIn delay={0.08} duration={0.7} viewport={false}>
+                  <TypographyH1 id="hero-title">
+                    Know what it&apos;s really like to work there.
+                  </TypographyH1>
+                </MotionFadeIn>
+                <MotionFadeIn delay={0.18} duration={0.7} viewport={false}>
+                  <TypographyP className="hero-description">
+                    Honest workplace experiences from people who have been
+                    there. Research Nigerian tech companies before you make
+                    your next career move.
+                  </TypographyP>
+                </MotionFadeIn>
+              </div>
               <MotionFadeIn
-                delay={0.02}
-                duration={0.45}
+                delay={0.3}
+                duration={1}
                 viewport={false}
-                className="mb-4"
+                className="hero-mascot"
               >
-                <InquisitiveBlobatar name="alain00" size={82} />
-              </MotionFadeIn>
-              <MotionFadeIn delay={0.08} duration={0.45} viewport={false}>
-                <TypographyH1 id="hero-title">
-                  Know what it&apos;s really like to work there.
-                </TypographyH1>
-              </MotionFadeIn>
-              <MotionFadeIn delay={0.12} duration={0.45} viewport={false}>
-                <TypographyP className="hero-description">
-                  Honest workplace experiences from people who have been there.
-                  Research Nigerian tech companies before you make your next
-                  career move.
-                </TypographyP>
+                <InquisitiveBlobatar name="alain00" size={72} />
               </MotionFadeIn>
             </div>
 
             <MotionFadeIn
               className="relative "
-              delay={0.2}
-              duration={0.45}
+              delay={0.28}
+              duration={0.7}
               viewport={false}
             >
-              <CompanySearchForm showSuggestions={true} />
+              <CompanySearchForm
+                containerClassName="mx-0 max-w-3xl"
+                showSuggestions={true}
+                suggestionsClassName="justify-start"
+              />
             </MotionFadeIn>
 
-            <MotionFadeIn delay={0.28} duration={0.45} viewport={false}>
+            <MotionFadeIn delay={0.38} duration={0.7} viewport={false}>
               <div className="hero-actions">
                 <Link className="text-link" href="/write-review">
                   Share Your Experience
@@ -136,7 +150,7 @@ export default function Home() {
               </div>
             </MotionFadeIn>
 
-            <MotionFadeIn delay={0.34} duration={0.45} viewport={false}>
+            <MotionFadeIn delay={0.48} duration={0.7} viewport={false}>
               <ApprovedOverview />
             </MotionFadeIn>
           </section>

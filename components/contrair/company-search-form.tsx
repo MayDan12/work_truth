@@ -30,11 +30,15 @@ const POPULAR_TAGS = [
 export function CompanySearchForm({
   initialQuery = "",
   className,
+  containerClassName,
   showSuggestions = false,
+  suggestionsClassName,
 }: {
   initialQuery?: string;
   className?: string;
+  containerClassName?: string;
   showSuggestions?: boolean;
+  suggestionsClassName?: string;
 }) {
   const [query, setQuery] = useState(initialQuery);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -55,16 +59,16 @@ export function CompanySearchForm({
       // Finished typing word, wait before deleting
       timeout = setTimeout(() => {
         setIsDeleting(true);
-      }, 1900);
+      }, 2400);
     } else if (isDeleting && currentText === "") {
       // Finished deleting word, pause before typing next
       timeout = setTimeout(() => {
         setIsDeleting(false);
         setCurrentWordIndex((prev) => (prev + 1) % SAMPLE_COMPANIES.length);
-      }, 280);
+      }, 450);
     } else {
       // Typing or deleting one character
-      const speed = isDeleting ? 36 : 70;
+      const speed = isDeleting ? 65 : 110;
       timeout = setTimeout(() => {
         setCurrentText((prev) =>
           isDeleting
@@ -83,7 +87,7 @@ export function CompanySearchForm({
   }
 
   return (
-    <div className="w-full max-w-xl mx-auto">
+    <div className={cn("w-full max-w-xl mx-auto", containerClassName)}>
       <form
         action="/companies"
         className={cn("company-search", className)}
@@ -158,7 +162,12 @@ export function CompanySearchForm({
 
       {/* Popular suggestions quick tags */}
       {showSuggestions && (
-        <div className="mt-3.5 flex flex-wrap items-center justify-center gap-1.5 text-xs text-muted-foreground">
+        <div
+          className={cn(
+            "mt-3.5 flex flex-wrap items-center justify-center gap-1.5 text-xs text-muted-foreground",
+            suggestionsClassName,
+          )}
+        >
           <span className="font-medium text-foreground/60 mr-0.5">Popular:</span>
           {POPULAR_TAGS.map((company) => (
             <Link
