@@ -3,6 +3,16 @@
 import { useState, type FormEvent } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import Link from "next/link";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,14 +28,30 @@ export function ReviewSubmissionForm() {
   const [pending, setPending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [confirmationOpen, setConfirmationOpen] = useState(false);
+  const [formToSubmit, setFormToSubmit] = useState<HTMLFormElement | null>(
+    null,
+  );
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setError("");
+    setFormToSubmit(event.currentTarget);
+    setConfirmationOpen(true);
+  }
+
+  async function handleConfirmedSubmit() {
+    if (!formToSubmit) {
+      setError("Please review your details and try submitting again.");
+      setConfirmationOpen(false);
+      return;
+    }
+
     setPending(true);
     setSubmitted(false);
     setError("");
 
-    const form = event.currentTarget;
+    const form = formToSubmit;
     const formData = new FormData(form);
     const companyName = String(formData.get("company") ?? "").trim();
     const companySlug = getCompanySlug(companyName);
@@ -39,6 +65,7 @@ export function ReviewSubmissionForm() {
     if (!companySlug) {
       setError("Enter a company name containing letters or numbers.");
       setPending(false);
+      setConfirmationOpen(false);
       return;
     }
 
@@ -56,6 +83,7 @@ export function ReviewSubmissionForm() {
         "Complete each field, make both written responses at least 10 characters, and accept the Terms of Service and Community Guidelines.",
       );
       setPending(false);
+      setConfirmationOpen(false);
       return;
     }
 
@@ -71,12 +99,15 @@ export function ReviewSubmissionForm() {
         moderationStatus: "pending",
       });
       form.reset();
+      setFormToSubmit(null);
       setSubmitted(true);
+      setConfirmationOpen(false);
     } catch (submissionError) {
       console.error("Could not submit workplace review.", submissionError);
       setError(
         "Your review could not be submitted. Please check your connection and Firebase setup, then try again.",
       );
+      setConfirmationOpen(false);
     } finally {
       setPending(false);
     }
@@ -261,6 +292,33 @@ export function ReviewSubmissionForm() {
           )}
         </Button>
       </form>
+      <AlertDialog
+        onOpenChange={setConfirmationOpen}
+        open={confirmationOpen}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Ready to submit your review?</AlertDialogTitle>
+            <AlertDialogDescription>
+              You can go back to make changes now. Once submitted, your review
+              will be sent for moderation and you will not be able to edit it
+              here.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={pending}>
+              Go back and edit
+            </AlertDialogCancel>
+            <AlertDialogAction
+              disabled={pending}
+              onClick={handleConfirmedSubmit}
+              type="button"
+            >
+              {pending ? "Submitting…" : "Yes, submit review"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
