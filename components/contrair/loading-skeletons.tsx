@@ -88,17 +88,10 @@ export function ReviewCardSkeleton() {
         </div>
       </header>
 
-      <div className="pros-cons">
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-12" />
-          <Skeleton className="h-3.5 w-full" />
-          <Skeleton className="h-3.5 w-4/5" />
-        </div>
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-12" />
-          <Skeleton className="h-3.5 w-full" />
-          <Skeleton className="h-3.5 w-3/4" />
-        </div>
+      <div className="review-body space-y-2">
+        <Skeleton className="h-3.5 w-full" />
+        <Skeleton className="h-3.5 w-full" />
+        <Skeleton className="h-3.5 w-4/5" />
       </div>
 
       <Skeleton className="h-3 w-28 mt-4" />
@@ -184,4 +177,3 @@ export function CompanyDetailSkeleton() {
     </div>
   );
 }
-

@@ -12,6 +12,13 @@ export function parseWorkplaceReview(
   id: string,
   data: DocumentData,
 ): WorkplaceReview {
+  const review =
+    typeof data.review === "string"
+      ? data.review
+      : typeof data.pros === "string" && typeof data.cons === "string"
+        ? `What worked well?\n${data.pros}\n\nWhat could have been better?\n${data.cons}`
+        : null;
+
   if (
     typeof data.companyName !== "string" ||
     typeof data.role !== "string" ||
@@ -21,8 +28,7 @@ export function parseWorkplaceReview(
     !Number.isInteger(data.rating) ||
     data.rating < 1 ||
     data.rating > 5 ||
-    typeof data.pros !== "string" ||
-    typeof data.cons !== "string" ||
+    review === null ||
     !(data.createdAt instanceof Timestamp)
   ) {
     throw new Error(`Review ${id} has an invalid Firestore document shape.`);
@@ -38,8 +44,7 @@ export function parseWorkplaceReview(
     role: data.role,
     employmentStatus: data.employmentStatus as EmployeeStatus,
     rating: data.rating,
-    pros: data.pros,
-    cons: data.cons,
+    review,
     createdAt: data.createdAt.toDate(),
   };
 }

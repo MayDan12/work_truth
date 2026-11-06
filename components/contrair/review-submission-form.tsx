@@ -60,8 +60,7 @@ export function ReviewSubmissionForm() {
     const role = String(formData.get("role") ?? "").trim();
     const employmentStatus = String(formData.get("employmentStatus") ?? "");
     const rating = Number(formData.get("rating"));
-    const pros = String(formData.get("pros") ?? "").trim();
-    const cons = String(formData.get("cons") ?? "").trim();
+    const review = String(formData.get("review") ?? "").trim();
     const acceptedTerms = formData.get("acceptedTerms") === "on";
 
     if (!companySlug) {
@@ -77,12 +76,12 @@ export function ReviewSubmissionForm() {
       !Number.isInteger(rating) ||
       rating < 1 ||
       rating > 5 ||
-      pros.length < 10 ||
-      cons.length < 10 ||
+      review.length < 10 ||
+      review.length > 1600 ||
       !acceptedTerms
     ) {
       setError(
-        "Complete each field, make both written responses at least 10 characters, and accept the Terms of Service and Community Guidelines.",
+        "Complete each field, make your review between 10 and 1,600 characters, and accept the Terms of Service and Community Guidelines.",
       );
       setPending(false);
       setConfirmationOpen(false);
@@ -95,8 +94,7 @@ export function ReviewSubmissionForm() {
         role,
         employmentStatus,
         rating,
-        pros,
-        cons,
+        review,
         createdAt: serverTimestamp(),
         moderationStatus: "pending",
       });
@@ -114,8 +112,7 @@ export function ReviewSubmissionForm() {
             role,
             employmentStatus,
             rating,
-            pros,
-            cons,
+            review,
           }),
         });
 
@@ -219,29 +216,20 @@ export function ReviewSubmissionForm() {
         </div>
 
         <div className="form-field">
-          <Label htmlFor="review-pros">What worked well?</Label>
+          <Label htmlFor="review-text">Your review</Label>
           <Textarea
-            id="review-pros"
-            maxLength={800}
+            aria-describedby="review-text-help"
+            id="review-text"
+            maxLength={1600}
             minLength={10}
-            name="pros"
-            placeholder="Share a specific, constructive example."
+            name="review"
+            placeholder="Share your honest, constructive workplace experience."
             required
-            rows={4}
+            rows={7}
           />
-        </div>
-
-        <div className="form-field">
-          <Label htmlFor="review-cons">What could have been better?</Label>
-          <Textarea
-            id="review-cons"
-            maxLength={800}
-            minLength={10}
-            name="cons"
-            placeholder="Describe a challenge without naming individuals."
-            required
-            rows={4}
-          />
+          <p className="form-help" id="review-text-help">
+            Feel free to explain what was good and what could be better.
+          </p>
         </div>
 
         <div className="form-field">

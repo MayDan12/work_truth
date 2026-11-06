@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import {
   collection,
   onSnapshot,
@@ -23,6 +24,7 @@ import {
   ReviewCard,
 } from "@/components/contrair/data-views";
 import { CompanySearchForm } from "@/components/contrair/company-search-form";
+import { buttonVariants } from "@/components/ui/button";
 import {
   CompanyDetailSkeleton,
   CompanyGridSkeleton,
@@ -31,6 +33,7 @@ import {
   ReviewGridSkeleton,
 } from "@/components/contrair/loading-skeletons";
 import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 import {
   TypographyH1,
   TypographyH2,
@@ -231,7 +234,7 @@ export function ApprovedOverview() {
         </div>
       ) : null}
       <div className="approved-overview-reviews">
-        {reviews.slice(0, 3).map((review) => (
+        {reviews.slice(0, 4).map((review) => (
           <ReviewCard key={review.id} review={review} />
         ))}
       </div>
@@ -387,16 +390,25 @@ export function ApprovedCompanyReviewList({ slug }: { slug: string }) {
     <>
       <section aria-labelledby="company-title" className="mt-8">
         <p className="sample-label">Employee reviews</p>
-        <TypographyH1
-          className="mt-3 text-[clamp(2rem,4vw,3rem)]"
-          id="company-title"
-        >
-          {company?.name ??
-            slug
-              .split("-")
-              .map((word) => word[0]?.toUpperCase() + word.slice(1))
-              .join(" ")}
-        </TypographyH1>
+        <div className="mt-3 flex items-center justify-between gap-4">
+          <TypographyH1
+            className="min-w-0 flex-1 text-[clamp(2rem,4vw,3rem)]"
+            id="company-title"
+          >
+            {company?.name ??
+              slug
+                .split("-")
+                .map((word) => word[0]?.toUpperCase() + word.slice(1))
+                .join(" ")}
+          </TypographyH1>
+          <Link
+            className={cn(buttonVariants({ size: "lg" }), "header-cta")}
+            href="/write-review"
+          >
+            Write a review
+            <ArrowUpRight aria-hidden="true" className="size-4" />
+          </Link>
+        </div>
         <div className="mt-5">
           <Rating
             count={reviews.length}

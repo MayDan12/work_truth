@@ -76,15 +76,8 @@ export function ReviewCard({ review }: { review: WorkplaceReview }) {
           <span>/ 5</span>
         </div>
       </header>
-      <div className="pros-cons">
-        <div>
-          <h4>Pros</h4>
-          <TypographyP>{review.pros}</TypographyP>
-        </div>
-        <div>
-          <h4>Cons</h4>
-          <TypographyP>{review.cons}</TypographyP>
-        </div>
+      <div className="review-body">
+        <TypographyP>{review.review}</TypographyP>
       </div>
       <p className="review-card-date">
         Submitted{" "}

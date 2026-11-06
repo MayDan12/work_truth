@@ -7,8 +7,7 @@ export type WorkplaceReview = {
   role: string
   employmentStatus: EmployeeStatus
   rating: number
-  pros: string
-  cons: string
+  review: string
   createdAt: Date
 }
 

@@ -34,11 +34,12 @@ appear in public company listings only after an admin approves them.
 2. Copy `.env.example` to `.env.local` and enter the Web app's `apiKey`,
    `authDomain`, `projectId`, and `appId`. Restart the Next.js development
    server after changing environment values.
-3. Firestore security rules are currently managed in Firebase Console. Confirm
-   that the deployed rules allow public review submissions only as `pending`,
-   allow public reads only for approved reviews, and restrict moderation
-   actions to authorized admins. The rule source is not currently checked into
-   this repository; export and review it before relying on a CLI deployment or
+3. Firestore security rules are currently managed in Firebase Console. Update
+   the deployed rules before accepting submissions so they allow public review
+   submissions with a `review` string of 10–1,600 characters only as `pending`,
+   public reads only for approved reviews, and moderation actions only by
+   authorized admins. The rule source is not currently checked into this
+   repository; export and review it before relying on a CLI deployment or
    setting up another Firebase project.
 4. The composite indexes for the `reviews` collection are also managed in
    Firebase Console. Confirm that both indexes are enabled, with **Query
@@ -74,13 +75,14 @@ appear in public company listings only after an admin approves them.
 ### Review data and launch notes
 
 The `reviews` collection stores `companyName`, `role`, `employmentStatus`,
-`rating`, `pros`, `cons`, `createdAt`, and `moderationStatus`. The admin flow
-adds `companySlug` as part of approval, so submitters cannot choose which
-company page their review appears on. Firestore rules validate public
-submissions and prevent users from setting their own moderation status to
-approved. Only a project owner using the Firebase Console can add admin
-documents; client writes to `admins` are denied. Client Firebase configuration
-values are public identifiers, not secrets.
+`rating`, `review`, `createdAt`, and `moderationStatus`. The admin flow adds
+`companySlug` as part of approval, so submitters cannot choose which company
+page their review appears on. Firestore rules validate public submissions and
+prevent users from setting their own moderation status to approved. Existing
+reviews stored with `pros` and `cons` remain readable. Only a project owner
+using the Firebase Console can add admin documents; client writes to `admins`
+are denied. Client Firebase configuration values are public identifiers, not
+secrets.
 
 Public submissions are intentionally account-free, so they can attract spam.
 Before a public launch, configure Firebase App Check and consider additional

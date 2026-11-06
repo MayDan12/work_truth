@@ -3,8 +3,7 @@ type ReviewNotification = {
   role: string;
   employmentStatus: "Current employee" | "Former employee";
   rating: number;
-  pros: string;
-  cons: string;
+  review: string;
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -27,12 +26,9 @@ function isReviewNotification(value: unknown): value is ReviewNotification {
     Number.isInteger(value.rating) &&
     value.rating >= 1 &&
     value.rating <= 5 &&
-    typeof value.pros === "string" &&
-    value.pros.trim().length >= 10 &&
-    value.pros.length <= 800 &&
-    typeof value.cons === "string" &&
-    value.cons.trim().length >= 10 &&
-    value.cons.length <= 800
+    typeof value.review === "string" &&
+    value.review.trim().length >= 10 &&
+    value.review.length <= 1600
   );
 }
 
@@ -81,8 +77,7 @@ export async function POST(request: Request) {
     `<p><strong>Role:</strong> ${escapeHtml(payload.role)}</p>`,
     `<p><strong>Employment status:</strong> ${escapeHtml(payload.employmentStatus)}</p>`,
     `<p><strong>Rating:</strong> ${payload.rating} out of 5</p>`,
-    `<p><strong>What worked well?</strong><br>${escapeHtml(payload.pros).replace(/\r?\n/g, "<br>")}</p>`,
-    `<p><strong>What could have been better?</strong><br>${escapeHtml(payload.cons).replace(/\r?\n/g, "<br>")}</p>`,
+    `<p><strong>Review:</strong><br>${escapeHtml(payload.review).replace(/\r?\n/g, "<br>")}</p>`,
   ].join("\n");
 
   try {

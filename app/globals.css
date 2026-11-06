@@ -508,7 +508,7 @@
 
   .approved-overview-reviews {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
     padding-top: 1.1rem;
   }
@@ -746,30 +746,16 @@
     font-size: 0.8125rem;
   }
 
-  .pros-cons {
+  .review-body {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
     padding-top: 1rem;
   }
 
-  .pros-cons h4 {
-    color: var(--primary);
-    font-size: 0.75rem;
-    font-weight: 650;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .pros-cons > div:last-child h4 {
-    color: #686e67;
-  }
-
-  .pros-cons p {
-    margin-top: 0.35rem;
+  .review-body p {
     color: #555c55;
     font-size: 0.875rem;
     line-height: 1.65;
+    white-space: pre-wrap;
   }
 
   .review-card-date {
@@ -1055,11 +1041,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .pros-cons {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
-  }
-
   .privacy-layout {
     grid-template-columns: 0.9fr 1.1fr;
     gap: 4rem;
@@ -1324,7 +1305,7 @@
   }
 
   .approved-overview-reviews {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
