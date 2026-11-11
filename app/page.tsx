@@ -150,8 +150,35 @@ export default function Home() {
               </div>
             </MotionFadeIn>
 
-            <MotionFadeIn delay={0.48} duration={0.7} viewport={false}>
+            {/* <MotionFadeIn delay={0.48} duration={0.7} viewport={false}>
               <ApprovedOverview />
+            </MotionFadeIn> */}
+          </section>
+
+          {/* Discovery Section */}
+          <section
+            aria-labelledby="discovery-title"
+            className="page-container section"
+          >
+            <MotionFadeIn className="discovery-header">
+              <div>
+                <TypographyH2 id="discovery-title">
+                  Get to know the companies behind the job titles.
+                </TypographyH2>
+                <p className="discovery-note">
+                  Explore companies with employee reviews.
+                </p>
+              </div>
+              <Link className="text-link" href="/companies">
+                Explore Companies{" "}
+                <ArrowUpRight aria-hidden="true" className="size-4" />
+              </Link>
+            </MotionFadeIn>
+            <MotionFadeIn delay={0.1}>
+              <ApprovedCompanyCards
+                emptyMessage="No companies appear until a workplace review is submitted."
+                limit={6}
+              />
             </MotionFadeIn>
           </section>
 
@@ -183,7 +210,7 @@ export default function Home() {
           </section>
 
           {/* How it Works Section */}
-          <section
+          {/* <section
             aria-labelledby="how-title"
             className="how-section section"
             id="how-it-works"
@@ -206,34 +233,7 @@ export default function Home() {
                 ))}
               </MotionStagger>
             </div>
-          </section>
-
-          {/* Discovery Section */}
-          <section
-            aria-labelledby="discovery-title"
-            className="page-container section"
-          >
-            <MotionFadeIn className="discovery-header">
-              <div>
-                <TypographyH2 id="discovery-title">
-                  Get to know the companies behind the job titles.
-                </TypographyH2>
-                <p className="discovery-note">
-                  Explore companies with employee reviews.
-                </p>
-              </div>
-              <Link className="text-link" href="/companies">
-                Explore Companies{" "}
-                <ArrowUpRight aria-hidden="true" className="size-4" />
-              </Link>
-            </MotionFadeIn>
-            <MotionFadeIn delay={0.1}>
-              <ApprovedCompanyCards
-                emptyMessage="No companies appear until a workplace review is submitted."
-                limit={6}
-              />
-            </MotionFadeIn>
-          </section>
+          </section> */}
 
           {/* Reviews Section */}
           <section
