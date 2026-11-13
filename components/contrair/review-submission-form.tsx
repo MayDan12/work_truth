@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { Star } from "lucide-react";
 import Link from "next/link";
+import Confetti from "react-confetti";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -37,6 +38,8 @@ export function ReviewSubmissionForm() {
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoverRating, setHoverRating] = useState<number | null>(null);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [confettiVisible, setConfettiVisible] = useState(false);
+  const [confettiSize, setConfettiSize] = useState({ width: 0, height: 0 });
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -54,6 +57,7 @@ export function ReviewSubmissionForm() {
 
     setPending(true);
     setSubmitted(false);
+    setConfettiVisible(false);
     setError("");
     setNotificationError("");
 
@@ -109,6 +113,13 @@ export function ReviewSubmissionForm() {
       setFormToSubmit(null);
       setSubmitted(true);
       setConfirmationOpen(false);
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        setConfettiSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+        setConfettiVisible(true);
+      }
 
       try {
         const notificationResponse = await fetch("/api/review-notification", {
@@ -314,6 +325,20 @@ export function ReviewSubmissionForm() {
             Your review was submitted for moderation. It will appear on the site
             only if GistHQ approves it.
           </p>
+        ) : null}
+        {confettiVisible ? (
+          <div aria-hidden="true" className="review-confetti">
+            <Confetti
+              colors={["#315e46", "#b48b3a", "#d57c52", "#87a892"]}
+              gravity={0.25}
+              height={confettiSize.height}
+              numberOfPieces={140}
+              onConfettiComplete={() => setConfettiVisible(false)}
+              recycle={false}
+              tweenDuration={700}
+              width={confettiSize.width}
+            />
+          </div>
         ) : null}
         {notificationError ? (
           <p className="form-error" role="alert">
