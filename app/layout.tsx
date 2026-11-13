@@ -13,6 +13,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// When adding new metadata fields, ensure they are also included in the `metadata` export below. This is important for Next.js to correctly handle and render the metadata for SEO and social sharing purposes.
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://gisthq.vercel.app"),
   title: {
