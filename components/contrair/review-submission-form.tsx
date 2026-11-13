@@ -36,6 +36,7 @@ export function ReviewSubmissionForm() {
   );
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoverRating, setHoverRating] = useState<number | null>(null);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -104,6 +105,7 @@ export function ReviewSubmissionForm() {
       form.reset();
       setSelectedRating(0);
       setHoverRating(null);
+      setTermsAccepted(false);
       setFormToSubmit(null);
       setSubmitted(true);
       setConfirmationOpen(false);
@@ -266,8 +268,12 @@ export function ReviewSubmissionForm() {
           <div className="flex items-start gap-3">
             <input
               className="mt-1 size-4 shrink-0 accent-primary"
+              checked={termsAccepted}
               id="review-terms"
               name="acceptedTerms"
+              onChange={(event) =>
+                setTermsAccepted(event.currentTarget.checked)
+              }
               required
               type="checkbox"
             />
@@ -319,6 +325,7 @@ export function ReviewSubmissionForm() {
           disabled={pending}
           size="lg"
           type="submit"
+          variant={termsAccepted ? "default" : "secondary"}
         >
           {pending ? (
             <span className="flex items-center gap-2">

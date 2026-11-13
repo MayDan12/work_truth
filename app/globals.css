@@ -826,6 +826,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 0.8rem 1.25rem;
   }
 
