@@ -12,7 +12,7 @@ export default function WriteReviewPage() {
           <ArrowLeft aria-hidden="true" className="size-4" />
           Back to GistHQ
         </Link>
-        <div className="mt-8 max-w-[48rem]">
+        <div className="mx-auto mt-8 max-w-3xl">
           <TypographyH1 className="text-[clamp(2rem,4vw,3rem)]">
             Share your workplace experience.
           </TypographyH1>

@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { Star } from "lucide-react";
 import Link from "next/link";
 import {
   AlertDialog,
@@ -33,6 +34,8 @@ export function ReviewSubmissionForm() {
   const [formToSubmit, setFormToSubmit] = useState<HTMLFormElement | null>(
     null,
   );
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState<number | null>(null);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -99,6 +102,8 @@ export function ReviewSubmissionForm() {
         moderationStatus: "pending",
       });
       form.reset();
+      setSelectedRating(0);
+      setHoverRating(null);
       setFormToSubmit(null);
       setSubmitted(true);
       setConfirmationOpen(false);
@@ -161,6 +166,7 @@ export function ReviewSubmissionForm() {
             name="company"
             placeholder="Company name"
             required
+            className="h-11"
           />
         </div>
 
@@ -173,6 +179,7 @@ export function ReviewSubmissionForm() {
             name="role"
             placeholder="For example, product designer"
             required
+            className="h-11"
           />
           <p className="form-help" id="review-role-help">
             Keep the description broad; avoid team names or details that could
@@ -186,7 +193,7 @@ export function ReviewSubmissionForm() {
             id="review-status"
             name="employmentStatus"
             required
-            className="w-full"
+            className="w-full [&>select]:h-11"
           >
             <NativeSelectOption value="">Choose a status</NativeSelectOption>
             <NativeSelectOption value="Current employee">
@@ -198,25 +205,47 @@ export function ReviewSubmissionForm() {
           </NativeSelect>
         </div>
 
-        <div className="form-field">
-          <Label htmlFor="review-rating">Overall rating</Label>
-          <NativeSelect
-            id="review-rating"
-            name="rating"
-            required
-            className="w-full"
+        <fieldset
+          aria-describedby="review-rating-help"
+          className="form-field review-rating-fieldset"
+        >
+          <legend className="review-rating-legend">Overall rating</legend>
+          <div
+            className="review-rating"
+            onMouseLeave={() => setHoverRating(null)}
           >
-            <NativeSelectOption value="">Choose a rating</NativeSelectOption>
             {[1, 2, 3, 4, 5].map((rating) => (
-              <NativeSelectOption key={rating} value={String(rating)}>
-                {rating} out of 5
-              </NativeSelectOption>
+              <label
+                className={`review-rating-option ${
+                  rating <= (hoverRating ?? selectedRating) ? "is-active" : ""
+                }`}
+                key={rating}
+                onMouseEnter={() => setHoverRating(rating)}
+              >
+                <input
+                  aria-label={`${rating} out of 5 stars`}
+                  checked={selectedRating === rating}
+                  className="sr-only"
+                  name="rating"
+                  onChange={() => setSelectedRating(rating)}
+                  required
+                  type="radio"
+                  value={String(rating)}
+                />
+                <Star aria-hidden="true" />
+              </label>
             ))}
-          </NativeSelect>
-        </div>
+          </div>
+          <p className="form-help" id="review-rating-help">
+            Select 1 to 5 stars.
+          </p>
+        </fieldset>
 
         <div className="form-field">
-          <Label htmlFor="review-text">Your review</Label>
+          <Label htmlFor="review-text">
+            Your review (Feel free to explain what was good and what could be
+            better)
+          </Label>
           <Textarea
             aria-describedby="review-text-help"
             id="review-text"
@@ -226,6 +255,7 @@ export function ReviewSubmissionForm() {
             placeholder="Share your honest, constructive workplace experience."
             required
             rows={7}
+            className="min-h-36"
           />
           <p className="form-help" id="review-text-help">
             Feel free to explain what was good and what could be better.
@@ -320,10 +350,7 @@ export function ReviewSubmissionForm() {
           )}
         </Button>
       </form>
-      <AlertDialog
-        onOpenChange={setConfirmationOpen}
-        open={confirmationOpen}
-      >
+      <AlertDialog onOpenChange={setConfirmationOpen} open={confirmationOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Ready to submit your review?</AlertDialogTitle>

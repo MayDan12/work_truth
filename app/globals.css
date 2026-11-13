@@ -910,7 +910,7 @@
 
   .review-form {
     display: grid;
-    gap: 1.15rem;
+    gap: 1.5rem;
     margin-top: 1.5rem;
   }
 
@@ -924,16 +924,63 @@
     font-weight: 550;
   }
 
-  .form-field input,
+  .form-field input:not([type="radio"]):not([type="checkbox"]),
   .form-field select,
   .form-field textarea {
     border-radius: 0.4rem;
     background: var(--card);
+    padding: 0.55rem 0.75rem;
   }
 
-  .form-field input,
+  .form-field input:not([type="radio"]):not([type="checkbox"]),
   .form-field select {
     height: 2.9rem;
+  }
+
+  .review-rating-fieldset {
+    min-width: 0;
+    border: 0;
+    padding: 0;
+  }
+
+  .review-rating-legend {
+    font-size: 0.875rem;
+    font-weight: 550;
+  }
+
+  .review-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .review-rating-option {
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    place-items: center;
+    border-radius: 0.25rem;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition: color 120ms ease;
+  }
+
+  .review-rating-option:focus-within {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  .review-rating-option.is-active {
+    color: #b48b3a;
+  }
+
+  .review-rating-option svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .review-rating-option.is-active svg {
+    fill: currentColor;
   }
 
   .form-field textarea {
