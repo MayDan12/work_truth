@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ReviewSubmissionForm } from "@/components/contrair/review-submission-form";
 import { SitePageFrame } from "@/components/contrair/site-shell";
 import { TypographyH1, TypographyP } from "@/components/contrair/typography";
+// What is the purpose of this page? It is a form for users to submit reviews about their workplace experiences. The page includes a back link to the main site, a heading, an introductory paragraph, and the review submission form component.
 
 export default function WriteReviewPage() {
   return (
