@@ -13,6 +13,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// The metadata object defines the default metadata for the GistHQ website, including title, description, keywords, icons, Open Graph data, Twitter card information, and robots directives. This metadata is used for SEO and social media sharing purposes.
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://gisthq.vercel.app"),
   title: {
